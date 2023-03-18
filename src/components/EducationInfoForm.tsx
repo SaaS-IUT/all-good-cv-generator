@@ -16,7 +16,7 @@ const EducationInfoForm: NextComponentType = () => {
     const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
     const [description, setDescription] = useState<string>("");
 
-    const sendEducationInfo = () => {
+    function sendEducationInfo(){
         api.educationInfo.updateInfo.useMutation().mutate({
             institutionName: institutionName,
             institutionLocation: institutionLocation,
@@ -206,6 +206,10 @@ const EducationInfoForm: NextComponentType = () => {
             />
             <div>{description}</div>
             </div>
+            
+            <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+            </button>
 
           </div>
         </div>
