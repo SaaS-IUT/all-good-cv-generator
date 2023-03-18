@@ -52,7 +52,14 @@ model User {
 
     cv CV[]
 
-    info Info?
+    generalInfo        GeneralInfo?
+    educationInfo      EducationInfo[]
+    workInfo           WorkInfo[]
+    skillInfo          SkillInfo[]
+    accomplishmentInfo AccomplishmentInfo[]
+    Certifications     Certifications[]
+    projectInfo        ProjectInfo[]
+    publicationInfo    PublicationInfo[]
 }
 
 model VerificationToken {
@@ -80,24 +87,10 @@ model Custom {
     description String  @db.Text
 }
 
-model Info {
-    id                 String               @id @default(cuid())
-    userId             String               @unique
-    user               User                 @relation(fields: [userId], references: [id])
-    generalInfo        GeneralInfo?
-    educationInfo      EducationInfo[]
-    workInfo           WorkInfo[]
-    skillInfo          SkillInfo[]
-    accomplishmentInfo AccomplishmentInfo[]
-    Certifications     Certifications[]
-    projectInfo        ProjectInfo[]
-    publicationInfo    PublicationInfo[]
-}
-
 model GeneralInfo {
     id          String    @id @default(cuid())
-    infoId      String    @unique
-    info        Info      @relation(fields: [infoId], references: [id])
+    userId      String    @unique
+    user        User      @relation(fields: [userId], references: [id])
     firstName   String?
     lastName    String?
     address     String?
@@ -110,8 +103,8 @@ model GeneralInfo {
 
 model EducationInfo {
     id                  String   @id @default(cuid())
-    infoId              String   @unique
-    info                Info     @relation(fields: [infoId], references: [id])
+    userId              String
+    user                User     @relation(fields: [userId], references: [id])
     institutionName     String?
     institutionLocation String?
     degreeName          String?
@@ -127,8 +120,8 @@ model EducationInfo {
 
 model WorkInfo {
     id          String   @id @default(cuid())
-    infoId      String   @unique
-    info        Info     @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User     @relation(fields: [userId], references: [id])
     position    String?
     companyName String?
     startMonth  String?
@@ -141,8 +134,8 @@ model WorkInfo {
 
 model SkillInfo {
     id          String  @id @default(cuid())
-    infoId      String  @unique
-    info        Info    @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     rating      Int?
     description String?
@@ -150,16 +143,16 @@ model SkillInfo {
 
 model AccomplishmentInfo {
     id          String  @id @default(cuid())
-    infoId      String  @unique
-    info        Info    @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     description String?
 }
 
 model Certifications {
     id          String  @id @default(cuid())
-    infoId      String  @unique
-    info        Info    @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     description String?
     link        String?
@@ -167,8 +160,8 @@ model Certifications {
 
 model ProjectInfo {
     id          String  @id @default(cuid())
-    infoId      String  @unique
-    info        Info    @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     description String?
     link        String?
@@ -176,8 +169,8 @@ model ProjectInfo {
 
 model PublicationInfo {
     id          String  @id @default(cuid())
-    infoId      String  @unique
-    info        Info    @relation(fields: [infoId], references: [id])
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     description String?
     link        String?
