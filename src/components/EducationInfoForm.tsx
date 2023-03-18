@@ -1,6 +1,7 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
 import { api } from "~/utils/api";
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
 const EducationInfoForm: NextComponentType = () => {
 
@@ -41,6 +42,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Instituition Name</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Institution name"
@@ -50,6 +52,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setInstitutionName(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{institutionName}</div>
             </div>
 
@@ -57,6 +60,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Instituition Location</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Instituition Location"
@@ -66,6 +70,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setInstitutionLocation(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{institutionLocation}</div>
             </div>
 
@@ -73,6 +78,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Name of Degree</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Name of Degree"
@@ -82,6 +88,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setDegreeName(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{degreeName}</div>
             </div>
 
@@ -89,6 +96,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Grade</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Grade"
@@ -98,6 +106,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setGrade(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{grade}</div>
             </div>
 
@@ -179,6 +188,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label>Enter Field of Study</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Field of Study"
@@ -188,6 +198,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setFieldOfStudy(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{fieldOfStudy}</div>
             </div>
 
@@ -195,6 +206,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Description</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Description"
@@ -204,6 +216,7 @@ const EducationInfoForm: NextComponentType = () => {
                 setDescription(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{description}</div>
             </div>
 

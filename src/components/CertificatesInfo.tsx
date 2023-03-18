@@ -1,6 +1,7 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
 import { api } from "~/utils/api";
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
 const CertificatesInfo: NextComponentType = () => {
   const [name, setName] = useState<string>("");
@@ -21,6 +22,7 @@ const CertificatesInfo: NextComponentType = () => {
                 <label >Enter Name of Certificate</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Name of skill"
@@ -30,6 +32,7 @@ const CertificatesInfo: NextComponentType = () => {
                 setName(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{name}</div>
         </div>
 
@@ -37,6 +40,7 @@ const CertificatesInfo: NextComponentType = () => {
                 <label >Enter link</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Name of skill"
@@ -46,6 +50,7 @@ const CertificatesInfo: NextComponentType = () => {
                 setLink(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{link}</div>
         </div>
 
@@ -53,6 +58,7 @@ const CertificatesInfo: NextComponentType = () => {
                 <label >Enter Description</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Name of skill"
@@ -62,6 +68,7 @@ const CertificatesInfo: NextComponentType = () => {
                 setDescription(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{description}</div>
         </div>
 

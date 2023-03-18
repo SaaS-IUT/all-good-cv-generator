@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./Header";
 import React from "react";
 import { api } from "~/utils/api";
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
 
 
@@ -37,6 +38,7 @@ const InfoForm: NextComponentType = () => {
                 <label >Enter your Full Name</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
                 placeholder="Name"
@@ -46,6 +48,7 @@ const InfoForm: NextComponentType = () => {
                   setName(e.currentTarget.value)
                 }}
               />
+              </GrammarlyEditorPlugin>
               <div><Header name={name} address={address} dob={dateOfBirth} nationality={nationality} religion={religion} gender={gender} zip={zip}/></div>
             </div>
             
@@ -53,6 +56,7 @@ const InfoForm: NextComponentType = () => {
                 <label >Enter your Address</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
                 placeholder="Address"
@@ -62,6 +66,7 @@ const InfoForm: NextComponentType = () => {
                   setAddress(e.currentTarget.value)
                 }}
               />
+              </GrammarlyEditorPlugin>
               <div>{address}</div>
             </div>
 
@@ -100,6 +105,7 @@ const InfoForm: NextComponentType = () => {
                 <label >Enter your Nationality</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
                 value={nationality}
@@ -108,6 +114,7 @@ const InfoForm: NextComponentType = () => {
                   setNationality(e.currentTarget.value)
                 }}
               />
+              </GrammarlyEditorPlugin>
               <div>{nationality}</div>
             </div>
 
@@ -133,6 +140,7 @@ const InfoForm: NextComponentType = () => {
                 <label >Enter your Religion</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
                 value={religion}
@@ -141,6 +149,7 @@ const InfoForm: NextComponentType = () => {
                   setReligion(e.currentTarget.value)
                 }}
               />
+              </GrammarlyEditorPlugin>
               <div>{religion}</div>
             </div>
             <button  type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
