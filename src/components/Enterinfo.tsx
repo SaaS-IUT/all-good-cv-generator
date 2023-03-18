@@ -1,5 +1,4 @@
 import { NextComponentType } from "next";
-import { setgid } from "process";
 import { useState } from "react";
 
 const Enterinfo: NextComponentType = () => {
@@ -17,7 +16,7 @@ const Enterinfo: NextComponentType = () => {
     return (
       <div>
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2 font-bold text-3xl">Personal Information</div>
-        <form action="">
+        <form action="/EnterEduInfo.tsx">
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <label >Enter your First Name</label>
         </div>
@@ -145,6 +144,10 @@ const Enterinfo: NextComponentType = () => {
           />
           <div>{religion}</div>
         </div>
+
+        <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Next
+        </button>
 
         </form>
       </div>
