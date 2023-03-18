@@ -88,13 +88,13 @@ model Custom {
 }
 
 model GeneralInfo {
-    id          String    @id @default(cuid())
-    userId      String    @unique
-    user        User      @relation(fields: [userId], references: [id])
+    id          String  @id @default(cuid())
+    userId      String  @unique
+    user        User    @relation(fields: [userId], references: [id])
     name        String?
     address     String?
-    zipCode     Int?
-    dateOfBirth DateTime?
+    zipCode     String?
+    dateOfBirth String?
     nationality String?
     sex         String?
     religion    String?
@@ -107,12 +107,12 @@ model EducationInfo {
     institutionName     String?
     institutionLocation String?
     degreeName          String?
-    grade               Float?
+    grade               String?
     startMonth          String?
     startYear           String?
     endMonth            String?
     endYear             String?
-    currentlyIn         Boolean? @default(false)
+    graduated           Boolean? @default(true)
     fieldOfStudy        String?
     description         String?  @db.Text
 }

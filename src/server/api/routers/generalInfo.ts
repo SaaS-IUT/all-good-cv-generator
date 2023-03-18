@@ -22,18 +22,28 @@ export const generalInfoRouter = createTRPCRouter({
         .input(z.object({
             name: z.string(),
             address: z.string(),
-            zipCode: z.number(),
-            dateOfBirth: z.date(),
+            zipCode: z.string(),
+            dateOfBirth: z.string(),
             nationality: z.string(),
             sex: z.string(),
             religion: z.string()
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.generalInfo.update({
+            const result = await ctx.prisma.generalInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
+                    name: input.name,
+                    address: input.address,
+                    zipCode: input.zipCode,
+                    dateOfBirth: input.dateOfBirth,
+                    nationality: input.nationality,
+                    sex: input.sex,
+                    religion: input.religion,
+                },
+                update: {
                     name: input.name,
                     address: input.address,
                     zipCode: input.zipCode,

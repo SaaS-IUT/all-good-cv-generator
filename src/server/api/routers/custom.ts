@@ -7,11 +7,11 @@ import {
 
 export const customRouter = createTRPCRouter({
     getAllInfo: protectedProcedure
-        .input(z.string())
-        .query(async ({ ctx }) => {
+        .input(z.object({ cv: z.string()}))
+        .query(async ({ ctx, input }) => {
             const result = await ctx.prisma.custom.findMany({
                 where: {
-                    userId: ctx.session.user.id,
+                    cvId: input.cv
                 },
             });
             console.log("Result", result);
@@ -19,17 +19,24 @@ export const customRouter = createTRPCRouter({
             return result;
         }),
     updateInfo: protectedProcedure
-        .input(z.object({
-            theme: z.string(),
-
+        .input(z.object({ 
+            cv: z.string(),
+            label: z.string(),
+            description: z.string()
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.custom.update({
+            const result = await ctx.prisma.custom.upsert({
                 where: {
-                    userId: ctx.session.user.id
+                    cvId: input.cv
                 },
-                data: {
-                    theme: input.theme,
+                create: {
+                    cvId: input.cv,
+                    label: input.label,
+                    description: input.description
+                },
+                update: {
+                    label: input.label,
+                    description: input.description
                 }
             });
             console.log("Update returns:", result);
