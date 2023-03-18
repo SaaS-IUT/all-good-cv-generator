@@ -5,7 +5,7 @@ const config = {
     extend: {},
     fontFamily: {
       myfont1: ["Climate Crisis", "cursive"],
-      myfont2: [""],
+      myfont2: ["Raleway", "sans-serif"],
     },
   },
   plugins: [],
