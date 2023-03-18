@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const ProjectInfo: NextComponentType = () => {
@@ -13,7 +13,11 @@ const ProjectInfo: NextComponentType = () => {
       link: link,
       description: description
     })
-  };
+  }
+
+  // useEffect(() => {
+  //   sendProjectInfo();
+  // }),[name, link, description];
   
   return (
     <>

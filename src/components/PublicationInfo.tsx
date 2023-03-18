@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const PublicationInfo: NextComponentType = () => {
@@ -14,6 +14,10 @@ const PublicationInfo: NextComponentType = () => {
       description: description
     })
   }
+
+  // useEffect(() => {
+  //   sendPublicationInfo();
+  // }),[name, link, description];
   
   return (
     <>

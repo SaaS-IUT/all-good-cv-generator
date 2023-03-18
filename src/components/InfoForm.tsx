@@ -1,5 +1,6 @@
 import { type NextComponentType } from "next";
 import { useContext, useState } from "react";
+
 import Header from "./Header";
 import React from "react";
 import { api } from "~/utils/api";
@@ -7,8 +8,7 @@ import AppContext from "./AppContext";
 import Link from "next/link";
 
 
-
-const InfoForm: NextComponentType = () => {
+const InfoForm: NextComponentType = ({}) => {
 
   const context = useContext(AppContext);
 
@@ -25,6 +25,11 @@ const InfoForm: NextComponentType = () => {
         religion: context.religion
       })
     }
+    
+
+    // useEffect(() => {
+    //   sendGeneralInfo();
+    // }),[name, address, zip, dateOfBirth, gender, nationality, religion];
 
     return (
       <>
@@ -142,7 +147,8 @@ const InfoForm: NextComponentType = () => {
             </div>
 
             <Link href="editor/generatingEdu">
-            <button onClick={sendGeneralInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+           
+            <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
             </button>
             </Link>
@@ -153,4 +159,3 @@ const InfoForm: NextComponentType = () => {
   };
 
 export default InfoForm;
-  

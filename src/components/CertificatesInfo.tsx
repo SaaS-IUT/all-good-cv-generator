@@ -13,7 +13,7 @@ const CertificatesInfo: NextComponentType = () => {
       link: link,
       description: description
     })
-  };
+  }
 
   return (
     <>

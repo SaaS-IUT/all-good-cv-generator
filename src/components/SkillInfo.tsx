@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const SkillInfo: NextComponentType = () => {
@@ -15,6 +15,10 @@ const SkillInfo: NextComponentType = () => {
           description: description
         })
       }
+    
+    //   useEffect(() => {
+    //     sendSkillInfo();
+    //   }),[name, rating, description];
 
   return (
     <div>
@@ -64,7 +68,7 @@ const SkillInfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
-        <button onClick={sendSkillInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+        <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
         </button>
     </div>
