@@ -1,5 +1,4 @@
-import { NextComponentType } from "next";
-import Link from "next/link";
+import { type NextComponentType } from "next";
 
 const Footer: NextComponentType = () => {
   return <div className="h-[10rem] bg-[#F7F8F9]"></div>;
