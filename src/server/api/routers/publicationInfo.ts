@@ -26,9 +26,15 @@ export const publicationInfoRouter = createTRPCRouter({
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.publicationInfo.update({
+            const result = await ctx.prisma.publicationInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
+                },
+                create: {
+                    userId: ctx.session.user.id,
+                    name: input.name,
+                    description: input.description,
+                    link: input.link
                 },
                 data: {
                     name: input.name,

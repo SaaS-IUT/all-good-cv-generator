@@ -21,14 +21,17 @@ export const cvRouter = createTRPCRouter({
     updateInfo: protectedProcedure
         .input(z.object({
             theme: z.string(),
-
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.cV.update({
+            const result = await ctx.prisma.cV.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
+                    theme: input.theme,
+                },
+                update: {
                     theme: input.theme,
                 }
             });

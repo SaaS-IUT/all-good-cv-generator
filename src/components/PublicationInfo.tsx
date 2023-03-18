@@ -1,10 +1,19 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 const PublicationInfo: NextComponentType = () => {
   const [name, setName] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+
+  const sendPublicationInfo = () => {
+    api.publicationInfo.updateInfo.useMutation().mutate({
+      name: name,
+      link: link,
+      description: description
+    })
+  }
   
   return (
     <>

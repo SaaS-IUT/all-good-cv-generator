@@ -1,11 +1,20 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 const SkillInfo: NextComponentType = () => {
 
     const [name, setName] = useState<string>("");
     const [rating, setRating] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
+
+    const sendSkillInfo = () => {
+        api.skillInfo.updateInfo.useMutation().mutate({
+          name: name,
+          rating: rating,
+          description: description
+        })
+      }
 
   return (
     <div>
