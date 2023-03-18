@@ -14,8 +14,10 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
+  const { data: sessionData } = useSession();
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
+  const result = api.generalInfo.getAllInfo.useQuery(sessionData?.user.id);
+  console.log(result.data);
   return (
     <>
       <Head>
@@ -53,6 +55,7 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
+  console.log("User: ", sessionData?.user.id);
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
@@ -62,7 +65,7 @@ const AuthShowcase: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
+        {sessionData && <span>Logged in as {sessionData.user?.name} {sessionData.user.id}</span> }
         {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button

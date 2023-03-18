@@ -14,12 +14,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -55,6 +49,17 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+
+    cv CV[]
+
+    generalInfo        GeneralInfo?
+    educationInfo      EducationInfo[]
+    workInfo           WorkInfo[]
+    skillInfo          SkillInfo[]
+    accomplishmentInfo AccomplishmentInfo[]
+    Certifications     Certifications[]
+    projectInfo        ProjectInfo[]
+    publicationInfo    PublicationInfo[]
 }
 
 model VerificationToken {
@@ -63,4 +68,109 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model CV {
+    id          String   @id @default(cuid())
+    theme       String
+    userId      String
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    dateCreated DateTime @default(now())
+    custom      Custom[]
+}
+
+model Custom {
+    id          String  @id @default(cuid())
+    cv          CV?     @relation(fields: [cvId], references: [id])
+    cvId        String?
+    label       String
+    description String  @db.Text
+}
+
+model GeneralInfo {
+    id          String    @id @default(cuid())
+    userId      String    @unique
+    user        User      @relation(fields: [userId], references: [id])
+    name        String?
+    address     String?
+    zipCode     Int?
+    dateOfBirth DateTime?
+    nationality String?
+    sex         String?
+    religion    String?
+}
+
+model EducationInfo {
+    id                  String   @id @default(cuid())
+    userId              String
+    user                User     @relation(fields: [userId], references: [id])
+    institutionName     String?
+    institutionLocation String?
+    degreeName          String?
+    grade               Float?
+    startMonth          String?
+    startYear           String?
+    endMonth            String?
+    endYear             String?
+    currentlyIn         Boolean? @default(false)
+    fieldOfStudy        String?
+    description         String?  @db.Text
+}
+
+model WorkInfo {
+    id          String   @id @default(cuid())
+    userId      String
+    user        User     @relation(fields: [userId], references: [id])
+    position    String?
+    companyName String?
+    startMonth  String?
+    startYear   String?
+    endMonth    String?
+    endYear     String?
+    currentlyIn Boolean? @default(false)
+    description String?  @db.Text
+}
+
+model SkillInfo {
+    id          String  @id @default(cuid())
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
+    name        String?
+    rating      Int?
+    description String?
+}
+
+model AccomplishmentInfo {
+    id          String  @id @default(cuid())
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
+    name        String?
+    description String?
+}
+
+model Certifications {
+    id          String  @id @default(cuid())
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
+    name        String?
+    description String?
+    link        String?
+}
+
+model ProjectInfo {
+    id          String  @id @default(cuid())
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
+    name        String?
+    description String?
+    link        String?
+}
+
+model PublicationInfo {
+    id          String  @id @default(cuid())
+    userId      String
+    user        User    @relation(fields: [userId], references: [id])
+    name        String?
+    description String?
+    link        String?
 }
