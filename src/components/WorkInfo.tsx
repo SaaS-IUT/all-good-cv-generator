@@ -1,16 +1,15 @@
 import { type NextComponentType } from "next";
-import { useState } from "react"
+import { useState } from "react";
 
 const Workinfo: NextComponentType = () => {
-    const [position, setPostion] = useState<string>("");
-    const [companyName, setCompanyName] = useState<string>("");
-    const [startMonth, setStartMonth] = useState<string>("");
-    const [startYear, setStartYear] = useState<string>("");
-    const [endMonth, setEndMonth] = useState<string>("");
-    const [endYear, setEndYear] = useState<string>("");
-    const [currentlyIn, setCurrentlyIn] = useState(false);
-    const [description, setDescription] = useState<string>("");
-
+  const [position, setPostion] = useState<string>("");
+  const [companyName, setCompanyName] = useState<string>("");
+  const [startMonth, setStartMonth] = useState<string>("");
+  const [startYear, setStartYear] = useState<string>("");
+  const [endMonth, setEndMonth] = useState<string>("");
+  const [endYear, setEndYear] = useState<string>("");
+  const [currentlyIn, setCurrentlyIn] = useState(false);
+  const [description, setDescription] = useState<string>("");
 
   return (
     <div>
@@ -110,15 +109,17 @@ const Workinfo: NextComponentType = () => {
             <div>{endYear}</div>
         </div>
 
-        <div className="mx-5 mt-5 gap-2">
-            Are you currently in the company? 
-            <input
-                type="checkbox"
-                checked={currentlyIn}
-                onChange={e => setCurrentlyIn(e.target.checked)}
-            />
-            <div>{currentlyIn}</div>
-        </div>
+
+      <div className="mx-5 mt-5 gap-2">
+        Are you currently in the company?
+        <input
+          type="checkbox"
+          checked={currentlyIn}
+          onChange={(e) => setCurrentlyIn(e.target.checked)}
+        />
+        <div>{currentlyIn}</div>
+      </div>
+
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Description</label>
