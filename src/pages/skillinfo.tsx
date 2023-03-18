@@ -1,12 +1,12 @@
 import { type NextPage } from "next";
 import Footer from "~/components/Footer";
-import Skillinfo from "~/components/Skillinfo";
+import SkillInfo from "~/components/SkillInfo";
 
 const skillinfo: NextPage = () => {
   return (
     <div>
       <div>
-        <Skillinfo />
+        <SkillInfo />
       </div>
       <Footer />
     </div>

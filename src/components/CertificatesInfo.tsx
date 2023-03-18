@@ -1,11 +1,20 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 const CertificatesInfo: NextComponentType = () => {
   const [name, setName] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   
+  const sendCertificatesInfo = () => {
+    api.certifications.updateInfo.useMutation().mutate({
+      name: name,
+      link: link,
+      description: description
+    })
+  };
+
   return (
     <>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">

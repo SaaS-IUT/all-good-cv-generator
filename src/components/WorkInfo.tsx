@@ -1,5 +1,6 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 const Workinfo: NextComponentType = () => {
   const [position, setPostion] = useState<string>("");
@@ -8,9 +9,22 @@ const Workinfo: NextComponentType = () => {
   const [startYear, setStartYear] = useState<string>("");
   const [endMonth, setEndMonth] = useState<string>("");
   const [endYear, setEndYear] = useState<string>("");
-  const [currentlyIn, setCurrentlyIn] = useState(false);
+  const [currentlyIn, setCurrentlyIn] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
+  const sendWorkInfo = () => {
+    api.workInfo.updateInfo.useMutation().mutate({
+      position: position,
+      companyName: companyName,
+      startMonth: startMonth,
+      startYear: startYear,
+      endMonth: endMonth,
+      endYear: endYear,
+      currentlyIn: currentlyIn,
+      description: description
+    })
+  };
+  
   return (
     <div>
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">

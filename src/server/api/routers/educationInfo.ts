@@ -23,22 +23,23 @@ export const educationInfoRouter = createTRPCRouter({
             institutionName: z.string(),
             institutionLocation: z.string(),
             degreeName: z.string(),
-            grade: z.number(),
+            grade: z.string(),
             startMonth: z.string(),
             startYear: z.string(),
             endMonth: z.string(),
             endYear: z.string(),
-            currentlyIn: z.boolean(),
+            graduated: z.boolean(),
             fieldOfStudy: z.string(),
             description: z.string(),
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.educationInfo.update({
+            const result = await ctx.prisma.educationInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
                     institutionName: input.institutionName,
                     institutionLocation: input.institutionLocation,
                     degreeName: input.degreeName,
@@ -47,7 +48,20 @@ export const educationInfoRouter = createTRPCRouter({
                     startYear: input.startYear,
                     endMonth: input.endMonth,
                     endYear: input.endYear,
-                    currentlyIn: input.currentlyIn,
+                    graduated: input.currentlyIn,
+                    fieldOfStudy: input.fieldOfStudy,
+                    description: input.description
+                },
+                update: {
+                    institutionName: input.institutionName,
+                    institutionLocation: input.institutionLocation,
+                    degreeName: input.degreeName,
+                    grade: input.grade,
+                    startMonth: input.startMonth,
+                    startYear: input.startYear,
+                    endMonth: input.endMonth,
+                    endYear: input.endYear,
+                    graduated: input.currentlyIn,
                     fieldOfStudy: input.fieldOfStudy,
                     description: input.description
                 }

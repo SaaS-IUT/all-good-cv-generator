@@ -26,11 +26,17 @@ export const certificationsRouter = createTRPCRouter({
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.certifications.update({
+            const result = await ctx.prisma.certifications.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
+                    name: input.name,
+                    description: input.description,
+                    link: input.link
+                },
+                update: {
                     name: input.name,
                     description: input.description,
                     link: input.link

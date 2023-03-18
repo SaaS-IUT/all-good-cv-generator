@@ -1,20 +1,36 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
+import { api } from "~/utils/api";
 
 const EducationInfoForm: NextComponentType = () => {
 
-    const [instituitionName, setInstituitionName] = useState<string>("");
-    const [instituitionLocation, setInstituitionLocation] = useState<string>("");
+    const [institutionName, setInstitutionName] = useState<string>("");
+    const [institutionLocation, setInstitutionLocation] = useState<string>("");
     const [degreeName, setDegreeName] = useState<string>("");
     const [grade, setGrade] = useState<string>("");
     const [startMonth, setStartMonth] = useState<string>("");
     const [startYear, setStartYear] = useState<string>("");
     const [endMonth, setEndMonth] = useState<string>("");
     const [endYear, setEndYear] = useState<string>("");
-    const [graduated, setGraduated] = useState<string>("Not Graduated");
+    const [graduated, setGraduated] = useState<boolean>(true);
     const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [currentlyIn, setCurrentlyIn] = useState(false)
+
+    const sendEducationInfo = () => {
+        api.educationInfo.updateInfo.useMutation().mutate({
+            institutionName: institutionName,
+            institutionLocation: institutionLocation,
+            degreeName: degreeName,
+            grade: grade,
+            startMonth: startMonth,
+            startYear: startYear,
+            endMonth: endMonth,
+            endYear: endYear,
+            graduated: graduated,
+            fieldOfStudy: fieldOfStudy,
+            description: description
+        })
+      }
 
     return (
         <div>
@@ -28,13 +44,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Institution name"
-                value={instituitionName}
+                value={institutionName}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setInstituitionName(e.currentTarget.value)
+                setInstitutionName(e.currentTarget.value)
                 }}
             />
-            <div>{instituitionName}</div>
+            <div>{institutionName}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -44,17 +60,17 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Instituition Location"
-                value={instituitionLocation}
+                value={institutionLocation}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setInstituitionLocation(e.currentTarget.value)
+                setInstitutionLocation(e.currentTarget.value)
                 }}
             />
-            <div>{instituitionLocation}</div>
+            <div>{institutionLocation}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of degree</label>
+                <label >Enter Name of Degree</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
@@ -134,7 +150,7 @@ const EducationInfoForm: NextComponentType = () => {
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter ending Year</label>
+                <label >Enter Ending Year</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
@@ -153,8 +169,8 @@ const EducationInfoForm: NextComponentType = () => {
             Have you Graduated? 
             <input
                 type="checkbox"
-                checked={currentlyIn}
-                onChange={e => setCurrentlyIn(e.target.checked)}
+                checked={true}
+                onChange={e => setGraduated(e.target.checked)}
             />
             <div>{graduated}</div>
             </div>

@@ -25,11 +25,16 @@ export const accomplishmentInfoRouter = createTRPCRouter({
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.accomplishmentInfo.update({
+            const result = await ctx.prisma.accomplishmentInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
+                    name: input.name,
+                    description: input.description
+                },
+                update: {
                     name: input.name,
                     description: input.description
                 }
