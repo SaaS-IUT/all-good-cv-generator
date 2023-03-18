@@ -1,14 +1,15 @@
 import { type NextComponentType } from "next";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+
 import Header from "./Header";
 import React from "react";
 import { api } from "~/utils/api";
 import AppContext from "./AppContext";
 import Link from "next/link";
+import SendInfo from "./SendInfo";
 
 
-
-const InfoForm: NextComponentType = () => {
+const InfoForm: NextComponentType = ({}) => {
 
   const context = useContext(AppContext);
 
@@ -26,6 +27,12 @@ const InfoForm: NextComponentType = () => {
       })
     }
 
+
+    
+    // useEffect(() => {
+    //   sendGeneralInfo();
+    // }),[name, address, zip, dateOfBirth, gender, nationality, religion];
+
     return (
       <>
         <div className="mx-5 flex flex-col gap-2 font-bold text-3xl">Personal Information</div>
@@ -33,17 +40,17 @@ const InfoForm: NextComponentType = () => {
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter your Full Name</label>
             </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <div className="mx-5 mt-5 grid grid-cols-2 gap-2">
               <input
                 type="text"
                 placeholder="Name"
                 value={context.name}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setName(e.currentTarget.value)
                 }}
               />
-              <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/></div>
+              <div className="px-[3rem]"><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/></div>
             </div>
             
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -54,7 +61,7 @@ const InfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Address"
                 value={context.address}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setAddress(e.currentTarget.value)
                 }}
@@ -70,7 +77,7 @@ const InfoForm: NextComponentType = () => {
                 type="number"
                 placeholder="Address"
                 value={context.zip}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setZip(e.currentTarget.value)
                 }}
@@ -85,7 +92,7 @@ const InfoForm: NextComponentType = () => {
               <input
                 type="date"
                 value={context.dateOfBirth}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setDateOfBirth(e.currentTarget.value)
                 }}
@@ -100,7 +107,7 @@ const InfoForm: NextComponentType = () => {
               <input
                 type="text"
                 value={context.nationality}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setNationality(e.currentTarget.value)
                 }}
@@ -113,7 +120,7 @@ const InfoForm: NextComponentType = () => {
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <div>
-              <select
+              <select className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={context.gender}
                 onChange={e => context.setGender(e.target.value)}
               >
@@ -133,16 +140,16 @@ const InfoForm: NextComponentType = () => {
               <input
                 type="text"
                 value={context.religion}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                   context.setReligion(e.currentTarget.value)
                 }}
               />
               <div>{context.religion}</div>
             </div>
-
-            <Link href="generatingEdu">
-            <button onClick={sendGeneralInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            <Link href="/editor/generatingEdu">
+           
+            <button onClick={() => <SendInfo />}type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
             </button>
             </Link>
@@ -153,4 +160,3 @@ const InfoForm: NextComponentType = () => {
   };
 
 export default InfoForm;
-  
