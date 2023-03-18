@@ -46,7 +46,7 @@ const InfoForm: NextComponentType = () => {
                   setName(e.currentTarget.value)
                 }}
               />
-              <div><Header props={name} /></div>
+              <div><Header name={name} address={address} dob={dateOfBirth} nationality={nationality} religion={religion} gender={gender} zip={zip}/></div>
             </div>
             
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">

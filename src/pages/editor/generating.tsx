@@ -4,7 +4,7 @@ import InfoForm from "~/components/InfoForm";
 const generating: NextPage = () => {
   return (
     <div>
-        <div>
+        <div className="w-[160rem]">
             <InfoForm />
         </div>
     </div>
