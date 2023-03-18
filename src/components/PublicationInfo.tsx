@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const PublicationInfo: NextComponentType = () => {
@@ -7,13 +7,17 @@ const PublicationInfo: NextComponentType = () => {
   const [link, setLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
-  const sendPublicationInfo = () => {
+  function sendPublicationInfo(){
     api.publicationInfo.updateInfo.useMutation().mutate({
       name: name,
       link: link,
       description: description
     })
   }
+
+  // useEffect(() => {
+  //   sendPublicationInfo();
+  // }),[name, link, description];
   
   return (
     <>
@@ -64,6 +68,9 @@ const PublicationInfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
+        <button onClick={sendPublicationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </>
   );
 };

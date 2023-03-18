@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const SkillInfo: NextComponentType = () => {
@@ -8,13 +8,17 @@ const SkillInfo: NextComponentType = () => {
     const [rating, setRating] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
 
-    const sendSkillInfo = () => {
+    function sendSkillInfo(){
         api.skillInfo.updateInfo.useMutation().mutate({
           name: name,
           rating: rating,
           description: description
         })
       }
+    
+    //   useEffect(() => {
+    //     sendSkillInfo();
+    //   }),[name, rating, description];
 
   return (
     <div>
@@ -64,6 +68,9 @@ const SkillInfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
+        <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </div>
   );
 };

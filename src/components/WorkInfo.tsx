@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const Workinfo: NextComponentType = () => {
@@ -12,7 +12,8 @@ const Workinfo: NextComponentType = () => {
   const [currentlyIn, setCurrentlyIn] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
-  const sendWorkInfo = () => {
+
+  function sendWorkInfo(){
     api.workInfo.updateInfo.useMutation().mutate({
       position: position,
       companyName: companyName,
@@ -23,7 +24,11 @@ const Workinfo: NextComponentType = () => {
       currentlyIn: currentlyIn,
       description: description
     })
-  };
+  }
+
+//   useEffect(() => {
+//     sendWorkInfo();
+//   }),[position, companyName, startMonth, startYear, endMonth, endYear, currentlyIn, description];
   
   return (
     <div>
@@ -150,6 +155,9 @@ const Workinfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
+        <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </div>
   );
 };
