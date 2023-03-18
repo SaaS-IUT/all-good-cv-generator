@@ -1,7 +1,7 @@
 import { NextComponentType } from "next";
 import { useState } from "react";
 
-const Skillinfo: NextComponentType = () => {
+const SkillInfo: NextComponentType = () => {
 
     const [name, setName] = useState<string>("");
     const [rating, setRating] = useState<string>("");
@@ -76,4 +76,4 @@ const Skillinfo: NextComponentType = () => {
   );
 };
 
-export default Skillinfo;
+export default SkillInfo;
