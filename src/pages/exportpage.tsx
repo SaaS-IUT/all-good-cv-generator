@@ -5,6 +5,7 @@ import WorkExperienceInfo from "~/components/WorkExperienceInfo";
 import Skills from "~/components/Skills";
 import AppContext from "../components/AppContext";
 import { useContext } from "react";
+import { ReactDOM } from "react";
 
 const Template: NextComponentType = () => {
 
@@ -17,7 +18,7 @@ const Template: NextComponentType = () => {
         <WorkExperienceInfo post={context.position} place={context.companyName} start={context.workStartYear} end={context.workEndYear}/>
         <Skills />
         </div>
-        
+        <button className="btn btn-primary" id="download"> download pdf</button>
     </div>
   );
 };

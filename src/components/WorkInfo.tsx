@@ -81,13 +81,13 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Company Name"
-          value={companyName}
+          value={context.companyName}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setCompanyName(e.currentTarget.value);
+            context.setCompanyName(e.currentTarget.value);
           }}
         />
-        <div>{companyName}</div>
+        <div>{context.companyName}</div>
       </div>
 
 
@@ -115,13 +115,13 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Starting Year"
-          value={startYear}
+          value={context.startYear}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setStartYear(e.currentTarget.value);
+            context.setStartYear(e.currentTarget.value);
           }}
         />
-        <div>{startYear}</div>
+        <div>{context.startYear}</div>
       </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -148,13 +148,13 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Ending Year"
-          value={endYear}
+          value={context.endYear}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setEndYear(e.currentTarget.value);
+            context.setEndYear(e.currentTarget.value);
           }}
         />
-        <div>{endYear}</div>
+        <div>{context.endYear}</div>
       </div>
 
       <div className="mx-5 mt-5 gap-2">
