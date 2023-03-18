@@ -29,7 +29,8 @@ const ProjectInfo: NextComponentType = () => {
                 type="text"
                 placeholder="Project Name"
                 value={name}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                 onChange={(e) => {
                 setName(e.currentTarget.value)
                 }}
@@ -45,7 +46,8 @@ const ProjectInfo: NextComponentType = () => {
                         type="text"
                         placeholder="Project Link"
                         value={link}
-                        className="input-bordered input input-sm w-full"
+                        className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                         onChange={(e) => {
                         setLink(e.currentTarget.value)
                         }}
@@ -62,7 +64,8 @@ const ProjectInfo: NextComponentType = () => {
                     type="text"
                     placeholder="Project Description"
                     value={description}
-                    className="input-bordered input input-sm w-full"
+                    className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                     onChange={(e) => {
                     setDescription(e.currentTarget.value)
                     }}
