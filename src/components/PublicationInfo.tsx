@@ -1,4 +1,4 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import { useState } from "react";
 
 const PublicationInfo: NextComponentType = () => {
@@ -7,9 +7,9 @@ const PublicationInfo: NextComponentType = () => {
   const [description, setDescription] = useState<string>("");
   
   return (
-    <div>
+    <>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of Certificate</label>
+                <label >Enter Name of Publication</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
@@ -23,30 +23,14 @@ const PublicationInfo: NextComponentType = () => {
             />
             <div>{name}</div>
         </div>
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Description</label>
-            </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Name of skill"
-                value={description}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                setDescription(e.currentTarget.value)
-                }}
-            />
-            <div>{description}</div>
-        </div>
-
+        
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter link</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
                 type="text"
-                placeholder="Name of skill"
+                placeholder="Link of Publication"
                 value={link}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
@@ -55,7 +39,23 @@ const PublicationInfo: NextComponentType = () => {
             />
             <div>{link}</div>
         </div>
-    </div>
+
+        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter Description</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <input
+                type="text"
+                placeholder="Description"
+                value={description}
+                className="input-bordered input input-sm w-full"
+                onChange={(e) => {
+                setDescription(e.currentTarget.value)
+                }}
+            />
+            <div>{description}</div>
+        </div>
+    </>
   );
 };
 

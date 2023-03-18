@@ -1,4 +1,4 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import { useState } from "react";
 
 const CertificatesInfo: NextComponentType = () => {
@@ -7,7 +7,7 @@ const CertificatesInfo: NextComponentType = () => {
   const [description, setDescription] = useState<string>("");
   
   return (
-    <div>
+    <>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Name of Certificate</label>
             </div>
@@ -22,6 +22,22 @@ const CertificatesInfo: NextComponentType = () => {
                 }}
             />
             <div>{name}</div>
+        </div>
+
+        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter link</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <input
+                type="text"
+                placeholder="Name of skill"
+                value={link}
+                className="input-bordered input input-sm w-full"
+                onChange={(e) => {
+                setLink(e.currentTarget.value)
+                }}
+            />
+            <div>{link}</div>
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -40,22 +56,7 @@ const CertificatesInfo: NextComponentType = () => {
             <div>{description}</div>
         </div>
 
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter link</label>
-            </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Name of skill"
-                value={link}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                setLink(e.currentTarget.value)
-                }}
-            />
-            <div>{link}</div>
-        </div>
-    </div>
+    </>
   );
 };
 

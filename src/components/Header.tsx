@@ -1,5 +1,3 @@
-import { NextComponentType } from "next";
-import Enterinfo from "./Enterinfo";
 import React from 'react';
 
 interface Props {

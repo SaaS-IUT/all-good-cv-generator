@@ -1,7 +1,6 @@
-import { NextComponentType } from "next";
-import Header from "~/components/Header";
+import { type NextComponentType } from "next";
 import Education from "~/components/Education";
-import Workexp from "~/components/Workexp";
+// import Workexp from "~/components/Workexp";
 import Skills from "~/components/Skills";
 
 const Template: NextComponentType = () => {
@@ -9,7 +8,7 @@ const Template: NextComponentType = () => {
     <div className="border px-1">
       
       <Education></Education>
-      <Workexp></Workexp>
+      {/* <Workexp></Workexp> */}
       <Skills></Skills>
     </div>
   );
