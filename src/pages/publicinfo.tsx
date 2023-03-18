@@ -1,16 +1,16 @@
 import { type NextPage } from "next";
 import Footer from "~/components/Footer";
-import InfoForm from "~/components/InfoForm";
+import PublicationInfo from "~/components/PublicationInfo";
 
-const enterinfo: NextPage = () => {
+const publicinfo: NextPage = () => {
   return (
     <div>
       <div>
-        <InfoForm />
+        <PublicationInfo />
       </div>
       <Footer />
     </div>
   );
 };
 
-export default enterinfo;
+export default publicinfo;

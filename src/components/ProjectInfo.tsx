@@ -1,4 +1,4 @@
-import {type NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import { useState } from "react";
 
 const ProjectInfo: NextComponentType = () => {

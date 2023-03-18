@@ -1,13 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import CertificatesInfo from "~/components/CertificatesInfo";
-import EnterEduInfo from "~/components/EnterEduInfo";
-import Enterinfo from "~/components/Enterinfo";
-import ProjectInfo from "~/components/ProjectInfo";
-import PublicationInfo from "~/components/PublicationInfo";
-import Skillinfo from "~/components/Skillinfo";
-import Workinfo from "~/components/WorkInfo";
+
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
