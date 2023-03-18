@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
 const EducationInfoForm: NextComponentType = () => {
@@ -31,6 +31,10 @@ const EducationInfoForm: NextComponentType = () => {
             description: description
         })
       }
+    
+    // useEffect(() => {
+    //     sendEducationInfo();
+    // }),[institutionName, institutionLocation, degreeName, grade, startMonth, startYear, endMonth, endYear, graduated, fieldOfStudy, description];
 
     return (
         <div>
@@ -207,7 +211,7 @@ const EducationInfoForm: NextComponentType = () => {
             <div>{description}</div>
             </div>
             
-            <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
             </button>
 
