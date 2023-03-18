@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Bottomnav from "~/components/BottomNav";
 import WorkInfo from "~/components/WorkInfo";
 
 const workinfo: NextPage = () => {
@@ -7,6 +8,7 @@ const workinfo: NextPage = () => {
       <div>
         <WorkInfo />
       </div>
+      <Bottomnav />
     </div>
   );
 };

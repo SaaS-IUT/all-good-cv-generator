@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Bottomnav from "~/components/BottomNav";
 import Skillinfo from "~/components/Skillinfo";
 
 const skillinfo: NextPage = () => {
@@ -7,6 +8,7 @@ const skillinfo: NextPage = () => {
       <div>
         <Skillinfo />
       </div>
+      <Bottomnav />
     </div>
   );
 };

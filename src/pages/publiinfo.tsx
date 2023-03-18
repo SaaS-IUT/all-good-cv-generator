@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Bottomnav from "~/components/BottomNav";
 import PublicationInfo from "~/components/PublicationInfo";
 
 const publiinfo: NextPage = () => {
@@ -7,6 +8,7 @@ const publiinfo: NextPage = () => {
       <div>
         <PublicationInfo />
       </div>
+      <Bottomnav />
     </div>
   );
 };

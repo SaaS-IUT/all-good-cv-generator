@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import CertificatesInfo from "~/components/CertificatesInfo";
+import Bottomnav from "~/components/BottomNav";
 
 const certificationInfo: NextPage = () => {
   return (
@@ -7,6 +8,7 @@ const certificationInfo: NextPage = () => {
       <div>
         <CertificatesInfo />
       </div>
+      <Bottomnav />
     </div>
   );
 };
