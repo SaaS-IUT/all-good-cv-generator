@@ -1,5 +1,5 @@
-import { NextPage } from "next";
-import Bottomnav from "~/components/BottomNav";
+import { type NextPage } from "next";
+import Footer from "~/components/Footer";
 import ProjectInfo from "~/components/ProjectInfo";
 
 const projectinfo: NextPage = () => {
@@ -8,7 +8,7 @@ const projectinfo: NextPage = () => {
       <div>
         <ProjectInfo />
       </div>
-      <Bottomnav />
+      <Footer />
     </div>
   );
 };

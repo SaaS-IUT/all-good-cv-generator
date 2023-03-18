@@ -1,8 +1,8 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 
 const Education: NextComponentType = () => {
   return (
-    <div>
+    <>
       <div>
         {" "}
         <section className="my-8">
@@ -18,7 +18,7 @@ const Education: NextComponentType = () => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 

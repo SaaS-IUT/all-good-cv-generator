@@ -1,45 +1,45 @@
 import { type NextComponentType } from "next";
 import { useState } from "react";
 
-const PublicationInfo: NextComponentType = () => {
-  const [name, setName] = useState<string>("");
-  const [link, setLink] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  
+const SkillInfo: NextComponentType = () => {
+
+    const [name, setName] = useState<string>("");
+    const [rating, setRating] = useState<number>(0);
+    const [description, setDescription] = useState<string>("");
+
   return (
-    <>
-      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of Publication</label>
+    <div>
+        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter Name of Skill`</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
                 type="text"
-                placeholder="Name of skill"
+                placeholder="Skill"
                 value={name}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setName(e.currentTarget.value)
+                    setName(e.currentTarget.value)
                 }}
             />
             <div>{name}</div>
         </div>
-        
+
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter link</label>
+                <label >Enter Skill Rating</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
-                type="text"
-                placeholder="Link of Publication"
-                value={link}
+                type="number"
+                placeholder="Rating"
+                value={rating}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setLink(e.currentTarget.value)
+                  setRating(Number(e.currentTarget.value))
                 }}
             />
-            <div>{link}</div>
+            <div>{name}</div>
         </div>
-
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Description</label>
             </div>
@@ -50,13 +50,13 @@ const PublicationInfo: NextComponentType = () => {
                 value={description}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setDescription(e.currentTarget.value)
+                    setDescription(e.currentTarget.value)
                 }}
             />
             <div>{description}</div>
         </div>
-    </>
+    </div>
   );
 };
 
-export default PublicationInfo;
+export default SkillInfo;

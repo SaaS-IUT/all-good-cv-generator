@@ -1,6 +1,6 @@
-import { NextPage } from "next";
+import { type NextPage } from "next";
 import Temaplate from "~/components/Template";
-import Bottomnav from "~/components/BottomNav";
+import Footer from "~/components/Footer";
 
 const template: NextPage = () => {
   return (
@@ -10,7 +10,7 @@ const template: NextPage = () => {
           <Temaplate />
         </div>
       </>
-      <Bottomnav />
+      <Footer />
     </div>
   );
 };
