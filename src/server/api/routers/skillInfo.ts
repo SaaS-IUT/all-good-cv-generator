@@ -5,11 +5,11 @@ import {
     protectedProcedure,
 } from "~/server/api/trpc";
 
-export const generalInfoRouter = createTRPCRouter({
+export const skillInfoRouter = createTRPCRouter({
     getAllInfo: protectedProcedure
         .input(z.string())
         .query(async ({ ctx }) => {
-            const result = await ctx.prisma.generalInfo.findMany({
+            const result = await ctx.prisma.skillInfo.findMany({
                 where: {
                     userId: ctx.session.user.id,
                 },
@@ -21,26 +21,19 @@ export const generalInfoRouter = createTRPCRouter({
     updateInfo: protectedProcedure
         .input(z.object({
             name: z.string(),
-            address: z.string(),
-            zipCode: z.number(),
-            dateOfBirth: z.date(),
-            nationality: z.string(),
-            sex: z.string(),
-            religion: z.string()
+            rating: z.number(),
+            description: z.string(),
+
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.generalInfo.update({
+            const result = await ctx.prisma.skillInfo.update({
                 where: {
                     userId: ctx.session.user.id
                 },
                 data: {
                     name: input.name,
-                    address: input.address,
-                    zipCode: input.zipCode,
-                    dateOfBirth: input.dateOfBirth,
-                    nationality: input.nationality,
-                    sex: input.sex,
-                    religion: input.religion,
+                    rating: input.rating,
+                    description: input.description
                 }
             });
             console.log("Update returns:", result);

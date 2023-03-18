@@ -91,8 +91,7 @@ model GeneralInfo {
     id          String    @id @default(cuid())
     userId      String    @unique
     user        User      @relation(fields: [userId], references: [id])
-    firstName   String?
-    lastName    String?
+    name        String?
     address     String?
     zipCode     Int?
     dateOfBirth DateTime?
@@ -108,12 +107,12 @@ model EducationInfo {
     institutionName     String?
     institutionLocation String?
     degreeName          String?
-    grade               String?
+    grade               Float?
     startMonth          String?
     startYear           String?
     endMonth            String?
     endYear             String?
-    currentlyIn         Boolean?
+    currentlyIn         Boolean? @default(false)
     fieldOfStudy        String?
     description         String?  @db.Text
 }
@@ -128,7 +127,7 @@ model WorkInfo {
     startYear   String?
     endMonth    String?
     endYear     String?
-    currentlyIn Boolean?
+    currentlyIn Boolean? @default(false)
     description String?  @db.Text
 }
 
