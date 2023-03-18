@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Temaplate from "~/components/Template";
+import Bottomnav from "~/components/BottomNav";
 
 const template: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const template: NextPage = () => {
           <Temaplate />
         </div>
       </>
+      <Bottomnav />
     </div>
   );
 };
