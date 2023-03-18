@@ -1,7 +1,9 @@
 import { type NextComponentType } from "next";
+import Link from "next/link";
 import { useContext, useState } from "react";
 import { api } from "~/utils/api";
 import AppContext from "./AppContext";
+import Education from "./Education";
 import Header from "./Header";
 
 
@@ -28,9 +30,7 @@ const EducationInfoForm: NextComponentType = () => {
       
 
     return (
-        <div className="flex-auto w-64 ...">
-                <Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
-    
+        <div>    
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2 font-bold text-3xl">Educational Information</div>
           <div>
             
@@ -47,7 +47,9 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setInstitutionName(e.currentTarget.value)
                 }}
             />
-            <div>{context.institutionName}</div>
+            <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
+            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} /></div>
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -204,10 +206,12 @@ const EducationInfoForm: NextComponentType = () => {
             <div>{context.description}</div>
             </div>
             
-            <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                Next
-            </button>
-
+            <Link href="generatingwork">
+                <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                    Next
+                </button>
+            </Link>
+        
           </div>
         </div>
     );

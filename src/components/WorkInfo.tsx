@@ -1,25 +1,30 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import Link from "next/link";
+import { useContext, useState } from "react";
 import { api } from "~/utils/api";
+import AppContext from "./AppContext";
+import Education from "./Education";
+import Header from "./Header";
+import WorkExperienceInfo from "./WorkExperienceInfo";
 
 const Workinfo: NextComponentType = () => {
-  const [position, setPostion] = useState<string>("");
-  const [companyName, setCompanyName] = useState<string>("");
+    const context = useContext(AppContext);
+  
   const [startMonth, setStartMonth] = useState<string>("");
-  const [startYear, setStartYear] = useState<string>("");
+  
   const [endMonth, setEndMonth] = useState<string>("");
-  const [endYear, setEndYear] = useState<string>("");
+  
   const [currentlyIn, setCurrentlyIn] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
   function sendWorkInfo(){
     api.workInfo.updateInfo.useMutation().mutate({
-      position: position,
-      companyName: companyName,
+      position: context.position,
+      companyName: context.companyName,
       startMonth: startMonth,
-      startYear: startYear,
+      startYear: context.startYear,
       endMonth: endMonth,
-      endYear: endYear,
+      endYear: context.endYear,
       currentlyIn: currentlyIn,
       description: description
     })
@@ -34,13 +39,17 @@ const Workinfo: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Name of Position"
-                value={position}
+                value={context.position}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                    setPostion(e.currentTarget.value)
+                    context.setPostion(e.currentTarget.value)
                 }}
             />
-            <div>{position}</div>
+            <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
+            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} />
+            <WorkExperienceInfo post={context.position} place={context.companyName} start={context.workStartYear} end={context.workEndYear}/>
+            </div>
+
         </div>
         
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -50,13 +59,13 @@ const Workinfo: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Company Name"
-                value={companyName}
+                value={context.companyName}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                    setCompanyName(e.currentTarget.value)
+                    context.setCompanyName(e.currentTarget.value)
                 }}
             />
-            <div>{companyName}</div>
+            <div>{context.companyName}</div>
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -82,13 +91,13 @@ const Workinfo: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Starting Year"
-                value={startYear}
+                value={context.startYear}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                    setStartYear(e.currentTarget.value)
+                    context.setStartYear(e.currentTarget.value)
                 }}
             />
-            <div>{startYear}</div>
+            <div>{context.startYear}</div>
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -114,13 +123,13 @@ const Workinfo: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Ending Year"
-                value={endYear}
+                value={context.endYear}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                    setEndYear(e.currentTarget.value)
+                    context.setEndYear(e.currentTarget.value)
                 }}
             />
-            <div>{endYear}</div>
+            <div>{context.endYear}</div>
         </div>
 
 
@@ -150,9 +159,12 @@ const Workinfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
+
+        <Link href="../exportpage">
         <button onClick={sendWorkInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                Next
+                FINISH
         </button>
+        </Link>
     </div>
   );
 };

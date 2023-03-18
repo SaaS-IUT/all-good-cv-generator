@@ -36,6 +36,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
     const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
     const [description, setDescription] = useState<string>("");
 
+    const [position, setPostion] = useState<string>("");
+    const [companyName, setCompanyName] = useState<string>("");
+    const [workStartYear, setWorkStartYear] = useState<string>("");
+    const [workEndYear, setWorkEndYear] = useState<string>("");
+
   return (
     <SessionProvider session={session}>
       <Navbar /> 
@@ -46,7 +51,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           institutionLocation, setInstitutionLocation, degreeName, setDegreeName,
           grade, setGrade, startMonth, setStartMonth, startYear, setStartYear,
           endMonth, setEndMonth, endYear, setEndYear, graduated, setGraduated,
-          fieldOfStudy, setFieldOfStudy, description, setDescription
+          fieldOfStudy, setFieldOfStudy, description, setDescription, position,
+          setPostion, companyName, setCompanyName, workStartYear, setWorkStartYear,
+          workEndYear, setWorkEndYear
         }
       }>
         <Component {...pageProps} />
