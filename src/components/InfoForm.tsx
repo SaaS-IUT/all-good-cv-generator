@@ -2,7 +2,7 @@ import { type NextComponentType } from "next";
 import { useState } from "react";
 import Header from "./Header";
 import React from "react";
-import { string } from "zod";
+import { string, z } from "zod";
 
 
 
@@ -17,8 +17,6 @@ const InfoForm: NextComponentType = () => {
     const [nationality, setNationality] = useState<string>("");
     const [religion, setReligion] = useState<string>("");
 
-    console.log(fullName)
-
     return (
       <>
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2 font-bold text-3xl">Personal Information</div>
@@ -26,7 +24,7 @@ const InfoForm: NextComponentType = () => {
           <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <label >Enter your Full Name</label>
           </div>
-          <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+          <div className="mx-5 mt-5 grid grid-cols-2 gap-2">
             <input
               type="text"
               placeholder="Name"
@@ -36,7 +34,7 @@ const InfoForm: NextComponentType = () => {
                 setFullName(e.currentTarget.value)
               }}
             />
-            <div><Header props={fullName} /></div>
+            <div><Header name={fullName} address={address} zip={zip} dob={dateOfBirth} nationality={nationality} gender={gender} religion={religion}/></div>
           </div>
           
           <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -52,8 +50,8 @@ const InfoForm: NextComponentType = () => {
                 setAddress(e.currentTarget.value)
               }}
             />
-            <div>{address}</div>
           </div>
+          
 
           <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <label >Enter your zipcode</label>
@@ -134,6 +132,7 @@ const InfoForm: NextComponentType = () => {
             />
             <div>{religion}</div>
           </div>
+          
         </form>
       </>
     );
