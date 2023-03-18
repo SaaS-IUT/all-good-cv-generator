@@ -15,7 +15,7 @@ const Workinfo: NextComponentType = () => {
   return (
     <div>
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of degree</label>
+                <label >Enter Name of Position</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input

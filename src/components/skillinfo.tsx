@@ -1,7 +1,7 @@
 import { NextComponentType } from "next";
 import { useState } from "react";
 
-const skillinfo: NextComponentType = () => {
+const Skillinfo: NextComponentType = () => {
 
     const [name, setName] = useState<string>("");
     const [rating, setRating] = useState<string>("");
@@ -54,7 +54,7 @@ const skillinfo: NextComponentType = () => {
                 setRating(e.currentTarget.value)
                 }}
             />
-            <div>{name}</div>
+            <div>{rating}</div>
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -76,4 +76,4 @@ const skillinfo: NextComponentType = () => {
   );
 };
 
-export default skillinfo;
+export default Skillinfo;

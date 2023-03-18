@@ -1,10 +1,14 @@
 import { NextComponentType } from "next";
 import { useState } from "react";
+import Header from "./Header";
+import React from "react";
+import { string } from "zod";
+
+
 
 const Enterinfo: NextComponentType = () => {
 
-    const [firstname, setFirstName] = useState<string>("");
-    const [lastname, setLastName] = useState<string>("");
+    const [fullName, setFullName] = useState<string>("");
     const [address, setAddress] = useState<string>("");
     const [dateOfBirth, setDateOfBirth] = useState<string>("");
     const options = ["Male", "Female", "Not sure"]
@@ -24,29 +28,13 @@ const Enterinfo: NextComponentType = () => {
           <input
             type="text"
             placeholder="Name"
-            value={firstname}
+            value={fullName}
             className="input-bordered input input-sm w-full"
             onChange={(e) => {
-              setFirstName(e.currentTarget.value)
+              setFullName(e.currentTarget.value)
             }}
           />
-          <div>{firstname}</div>
-        </div>
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <label >Enter your Last Name</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <input
-            type="text"
-            placeholder="Name"
-            value={lastname}
-            className="input-bordered input input-sm w-full"
-            onChange={(e) => {
-              setLastName(e.currentTarget.value)
-            }}
-          />
-          <div>{lastname}</div>
+          <div><Header props={fullName} /></div>
         </div>
         
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -150,6 +138,9 @@ const Enterinfo: NextComponentType = () => {
         </button>
 
         </form>
+        
+        
+
       </div>
     );
   };
