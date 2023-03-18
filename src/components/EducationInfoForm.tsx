@@ -1,7 +1,7 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import { useState } from "react";
 
-const EnterEduInfo: NextComponentType = () => {
+const EducationInfoForm: NextComponentType = () => {
 
     const [instituitionName, setInstituitionName] = useState<string>("");
     const [instituitionLocation, setInstituitionLocation] = useState<string>("");
@@ -197,4 +197,4 @@ const EnterEduInfo: NextComponentType = () => {
 
 }
 
-export default EnterEduInfo;
+export default EducationInfoForm;

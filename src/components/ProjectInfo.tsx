@@ -1,4 +1,4 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import { useState } from "react";
 
 const ProjectInfo: NextComponentType = () => {
@@ -7,14 +7,14 @@ const ProjectInfo: NextComponentType = () => {
   const [description, setDescription] = useState<string>("");
   
   return (
-    <div>
+    <>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of Certificate</label>
+                <label >Enter Name of Project</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
                 type="text"
-                placeholder="Name of skill"
+                placeholder="Project Name"
                 value={name}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
@@ -25,37 +25,38 @@ const ProjectInfo: NextComponentType = () => {
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Description</label>
+                <label >Enter Link</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Name of skill"
-                value={description}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                setDescription(e.currentTarget.value)
-                }}
-            />
-            <div>{description}</div>
+                <input
+                        type="text"
+                        placeholder="Project Link"
+                        value={link}
+                        className="input-bordered input input-sm w-full"
+                        onChange={(e) => {
+                        setLink(e.currentTarget.value)
+                        }}
+                    />
+           
+            <div>{link}</div>
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter link</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Name of skill"
-                value={link}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                setLink(e.currentTarget.value)
-                }}
-            />
-            <div>{link}</div>
+                <input
+                    type="text"
+                    placeholder="Project Description"
+                    value={description}
+                    className="input-bordered input input-sm w-full"
+                    onChange={(e) => {
+                    setDescription(e.currentTarget.value)
+                    }}
+                />
+            <div>{description}</div>
         </div>
-    </div>
+    </>
   );
 };
 

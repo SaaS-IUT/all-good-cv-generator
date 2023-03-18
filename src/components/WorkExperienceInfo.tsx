@@ -1,6 +1,6 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 
-const Workexp: NextComponentType = () => {
+const WorkExperienceInfo: NextComponentType = () => {
   return (
     <div>
       <section className="my-8">
@@ -27,4 +27,4 @@ const Workexp: NextComponentType = () => {
   );
 };
 
-export default Workexp;
+export default WorkExperienceInfo;
