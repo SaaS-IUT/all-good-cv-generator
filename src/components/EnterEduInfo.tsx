@@ -1,6 +1,5 @@
 import { NextComponentType } from "next";
-import { setgid } from "process";
-import { useState } from "react"
+import { useState } from "react";
 
 const EnterEduInfo: NextComponentType = () => {
 

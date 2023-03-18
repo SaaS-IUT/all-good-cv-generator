@@ -9,6 +9,7 @@ import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
 import Enterinfo from "~/components/Enterinfo";
 import EnterEduInfo from "~/components/EnterEduInfo";
+import Workinfo from "~/components/WorkInfo";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -16,7 +17,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <EnterEduInfo />
+      <Workinfo />
     </SessionProvider>
     
   );
