@@ -26,9 +26,15 @@ export const skillInfoRouter = createTRPCRouter({
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.skillInfo.update({
+            const result = await ctx.prisma.skillInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
+                },
+                create: {
+                    userId: ctx.session.user.id,
+                    name: input.name,
+                    rating: input.rating,
+                    description: input.description
                 },
                 data: {
                     name: input.name,

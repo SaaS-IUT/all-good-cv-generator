@@ -31,11 +31,22 @@ export const workInfoRouter = createTRPCRouter({
 
         }))
         .mutation(async ({ ctx, input }) => {
-            const result = await ctx.prisma.workInfo.update({
+            const result = await ctx.prisma.workInfo.upsert({
                 where: {
                     userId: ctx.session.user.id
                 },
-                data: {
+                create: {
+                    userId: ctx.session.user.id,
+                    position: input.position,
+                    companyName: input.companyName,    
+                    startMonth: input.startMonth,
+                    startYear: input.startYear,
+                    endMonth: input.endMonth,
+                    endYear: input.endYear,
+                    currentlyIn: input.currentlyIn,
+                    description: input.description
+                },
+                update: {
                     position: input.position,
                     companyName: input.companyName,    
                     startMonth: input.startMonth,
