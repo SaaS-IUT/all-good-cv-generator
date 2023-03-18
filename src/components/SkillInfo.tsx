@@ -20,6 +20,7 @@ const SkillInfo: NextComponentType = () => {
   //   }),[name, rating, description];
 
   return (
+
     <div>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Name of Skill`</label>
@@ -36,6 +37,7 @@ const SkillInfo: NextComponentType = () => {
         />
         <div>{name}</div>
       </div>
+
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Skill Rating</label>
