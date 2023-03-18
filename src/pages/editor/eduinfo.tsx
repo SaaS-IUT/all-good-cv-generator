@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import EducationInfoForm from "~/components/EducationInfoForm";
 import Footer from "~/components/Footer";
+import FooterNav from "~/components/FooterNav";
 
 const eduinfo: NextPage = () => {
   return (
@@ -8,7 +9,7 @@ const eduinfo: NextPage = () => {
       <div>
         <EducationInfoForm />
       </div>
-      <Footer />
+      <FooterNav />
     </div>
   );
 };

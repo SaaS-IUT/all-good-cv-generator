@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Footer from "~/components/Footer";
+import FooterNav from "~/components/FooterNav";
 import ProjectInfo from "~/components/ProjectInfo";
 
 const projectinfo: NextPage = () => {
@@ -8,7 +9,7 @@ const projectinfo: NextPage = () => {
       <div>
         <ProjectInfo />
       </div>
-      <Footer />
+      <FooterNav />
     </div>
   );
 };
