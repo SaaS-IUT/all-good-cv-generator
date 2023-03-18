@@ -17,7 +17,7 @@ const InfoForm: NextComponentType = () => {
     const [nationality, setNationality] = useState<string>("");
     const [religion, setReligion] = useState<string>("");
 
-    const sendGeneralInfo = () => {
+    function sendGeneralInfo(){
       api.generalInfo.updateInfo.useMutation().mutate({
         name: name,
         address: address,
@@ -46,7 +46,7 @@ const InfoForm: NextComponentType = () => {
                   setName(e.currentTarget.value)
                 }}
               />
-              <div><Header props={name} /></div>
+              <div><Header name={name} address={address} dob={dateOfBirth} nationality={nationality} religion={religion} gender={gender} zip={zip}/></div>
             </div>
             
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -143,9 +143,9 @@ const InfoForm: NextComponentType = () => {
               />
               <div>{religion}</div>
             </div>
-            <button  type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            <button onClick={sendGeneralInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
-              </button>
+            </button>
 
         </form>
       </>

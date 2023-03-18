@@ -7,7 +7,7 @@ const ProjectInfo: NextComponentType = () => {
   const [link, setLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   
-  const sendProjectInfo = () => {
+  function sendProjectInfo(){
     api.projectInfo.updateInfo.useMutation().mutate({
       name: name,
       link: link,
@@ -65,6 +65,9 @@ const ProjectInfo: NextComponentType = () => {
                 />
             <div>{description}</div>
         </div>
+        <button onClick={sendProjectInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </>
   );
 };

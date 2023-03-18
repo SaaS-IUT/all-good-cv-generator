@@ -8,7 +8,7 @@ const SkillInfo: NextComponentType = () => {
     const [rating, setRating] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
 
-    const sendSkillInfo = () => {
+    function sendSkillInfo(){
         api.skillInfo.updateInfo.useMutation().mutate({
           name: name,
           rating: rating,
@@ -64,6 +64,9 @@ const SkillInfo: NextComponentType = () => {
             />
             <div>{description}</div>
         </div>
+        <button onClick={sendSkillInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </div>
   );
 };
