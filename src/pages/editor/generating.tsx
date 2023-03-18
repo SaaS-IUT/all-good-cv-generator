@@ -1,12 +1,14 @@
 import { type NextPage } from "next";
+import FooterNav from "~/components/FooterNav";
 import InfoForm from "~/components/InfoForm";
 
 const generating: NextPage = () => {
   return (
     <div>
-        <div className="w-[160rem]">
-            <InfoForm />
-        </div>
+      <div>
+        <InfoForm />
+      </div>
+      <FooterNav />
     </div>
   );
 };

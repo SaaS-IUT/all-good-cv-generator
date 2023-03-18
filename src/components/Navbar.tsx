@@ -16,10 +16,10 @@ const Navbar: NextComponentType = () => {
           <Link href="/">Home</Link>
         </div>
         <div className="text-black transition delay-150 duration-300 ease-in-out hover:text-blue-500">
-          <Link href="/">About us</Link>
+          <Link href="/about">About us</Link>
         </div>
         <div className="text-black transition delay-150 duration-300 ease-in-out hover:text-blue-500">
-          <Link href="/">Contact us</Link>
+          <Link href="/contact">Contact us</Link>
         </div>
         <div className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold text-transparent transition delay-150 duration-300 ease-in-out hover:text-blue-500">
           <Link href="/template">Template</Link>
