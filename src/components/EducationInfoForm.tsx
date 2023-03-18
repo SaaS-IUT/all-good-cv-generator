@@ -1,39 +1,36 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { api } from "~/utils/api";
+import AppContext from "./AppContext";
+import Header from "./Header";
+
 
 const EducationInfoForm: NextComponentType = () => {
 
-    const [institutionName, setInstitutionName] = useState<string>("");
-    const [institutionLocation, setInstitutionLocation] = useState<string>("");
-    const [degreeName, setDegreeName] = useState<string>("");
-    const [grade, setGrade] = useState<string>("");
-    const [startMonth, setStartMonth] = useState<string>("");
-    const [startYear, setStartYear] = useState<string>("");
-    const [endMonth, setEndMonth] = useState<string>("");
-    const [endYear, setEndYear] = useState<string>("");
-    const [graduated, setGraduated] = useState<boolean>(true);
-    const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
+    const context = useContext(AppContext);
 
     function sendEducationInfo(){
         api.educationInfo.updateInfo.useMutation().mutate({
-            institutionName: institutionName,
-            institutionLocation: institutionLocation,
-            degreeName: degreeName,
-            grade: grade,
-            startMonth: startMonth,
-            startYear: startYear,
-            endMonth: endMonth,
-            endYear: endYear,
-            graduated: graduated,
-            fieldOfStudy: fieldOfStudy,
-            description: description
+            institutionName: context.institutionName,
+            institutionLocation: context.institutionLocation,
+            degreeName: context.degreeName,
+            grade: context.grade,
+            startMonth: context.startMonth,
+            startYear: context.startYear,
+            endMonth: context.endMonth,
+            endYear: context.endYear,
+            graduated: context.graduated,
+            fieldOfStudy: context.fieldOfStudy,
+            description: context.description
         })
       }
+    
+      
 
     return (
-        <div>
+        <div className="flex-auto w-64 ...">
+                <Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
+    
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2 font-bold text-3xl">Educational Information</div>
           <div>
             
@@ -44,13 +41,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Institution name"
-                value={institutionName}
+                value={context.institutionName}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setInstitutionName(e.currentTarget.value)
+                    context.setInstitutionName(e.currentTarget.value)
                 }}
             />
-            <div>{institutionName}</div>
+            <div>{context.institutionName}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -60,13 +57,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Instituition Location"
-                value={institutionLocation}
+                value={context.institutionLocation}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setInstitutionLocation(e.currentTarget.value)
+                    context.setInstitutionLocation(e.currentTarget.value)
                 }}
             />
-            <div>{institutionLocation}</div>
+            <div>{context.institutionLocation}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -76,13 +73,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Name of Degree"
-                value={degreeName}
+                value={context.degreeName}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setDegreeName(e.currentTarget.value)
+                    context.setDegreeName(e.currentTarget.value)
                 }}
             />
-            <div>{degreeName}</div>
+            <div>{context.degreeName}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -92,13 +89,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Grade"
-                value={grade}
+                value={context.grade}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setGrade(e.currentTarget.value)
+                    context.setGrade(e.currentTarget.value)
                 }}
             />
-            <div>{grade}</div>
+            <div>{context.grade}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -108,13 +105,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Starting Month"
-                value={startMonth}
+                value={context.startMonth}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setStartMonth(e.currentTarget.value)
+                    context.setStartMonth(e.currentTarget.value)
                 }}
             />
-            <div>{startMonth}</div>
+            <div>{context.startMonth}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -124,13 +121,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Starting Year"
-                value={startYear}
+                value={context.startYear}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setStartYear(e.currentTarget.value)
+                    context.setStartYear(e.currentTarget.value)
                 }}
             />
-            <div>{startYear}</div>
+            <div>{context.startYear}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -140,13 +137,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Ending month"
-                value={endMonth}
+                value={context.endMonth}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setEndMonth(e.currentTarget.value)
+                    context.setEndMonth(e.currentTarget.value)
                 }}
             />
-            <div>{endMonth}</div>
+            <div>{context.endMonth}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -156,13 +153,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Ending Year"
-                value={endYear}
+                value={context.endYear}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setEndYear(e.currentTarget.value)
+                    context.setEndYear(e.currentTarget.value)
                 }}
             />
-            <div>{endYear}</div>
+            <div>{context.endYear}</div>
             </div>
 
             <div className="mx-5 mt-5 gap-2">
@@ -170,9 +167,9 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="checkbox"
                 checked={true}
-                onChange={e => setGraduated(e.target.checked)}
+                onChange={e => context.setGraduated(e.target.checked)}
             />
-            <div>{graduated}</div>
+            <div>{context.graduated}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -182,13 +179,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Field of Study"
-                value={fieldOfStudy}
+                value={context.fieldOfStudy}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setFieldOfStudy(e.currentTarget.value)
+                    context.setFieldOfStudy(e.currentTarget.value)
                 }}
             />
-            <div>{fieldOfStudy}</div>
+            <div>{context.fieldOfStudy}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -198,13 +195,13 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="text"
                 placeholder="Description"
-                value={description}
+                value={context.description}
                 className="input-bordered input input-sm w-full"
                 onChange={(e) => {
-                setDescription(e.currentTarget.value)
+                    context.setDescription(e.currentTarget.value)
                 }}
             />
-            <div>{description}</div>
+            <div>{context.description}</div>
             </div>
             
             <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">

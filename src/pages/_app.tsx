@@ -16,18 +16,39 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
 
 
-  const [name, setName] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [dateOfBirth, setDateOfBirth] = useState<string>("");
-  const [gender, setGender] = useState<string>("");
-  const [zip, setZip] = useState<string>("");
-  const [nationality, setNationality] = useState<string>("");
-  const [religion, setReligion] = useState<string>("");
+    const [name, setName] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const [dateOfBirth, setDateOfBirth] = useState<string>("");
+    const [gender, setGender] = useState<string>("");
+    const [zip, setZip] = useState<string>("");
+    const [nationality, setNationality] = useState<string>("");
+    const [religion, setReligion] = useState<string>("");
+
+    const [institutionName, setInstitutionName] = useState<string>("");
+    const [institutionLocation, setInstitutionLocation] = useState<string>("");
+    const [degreeName, setDegreeName] = useState<string>("");
+    const [grade, setGrade] = useState<string>("");
+    const [startMonth, setStartMonth] = useState<string>("");
+    const [startYear, setStartYear] = useState<string>("");
+    const [endMonth, setEndMonth] = useState<string>("");
+    const [endYear, setEndYear] = useState<string>("");
+    const [graduated, setGraduated] = useState<boolean>(true);
+    const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
 
   return (
     <SessionProvider session={session}>
       <Navbar /> 
-      <AppContext.Provider value={ { name, setName , address, setAddress, dateOfBirth, setDateOfBirth, gender, setGender, zip, setZip, nationality, setNationality, religion, setReligion}}>
+      <AppContext.Provider value={ 
+        { name, setName , address, setAddress, dateOfBirth, 
+          setDateOfBirth, gender, setGender, zip, setZip, nationality, 
+          setNationality, religion, setReligion, institutionName, setInstitutionName,
+          institutionLocation, setInstitutionLocation, degreeName, setDegreeName,
+          grade, setGrade, startMonth, setStartMonth, startYear, setStartYear,
+          endMonth, setEndMonth, endYear, setEndYear, graduated, setGraduated,
+          fieldOfStudy, setFieldOfStudy, description, setDescription
+        }
+      }>
         <Component {...pageProps} />
       </AppContext.Provider>
       <Footer />

@@ -11,9 +11,12 @@ const generatingEdu: NextPage = () => {
     
     return (
     <div>
-        <div className="w-[160rem]">
-            <EducationInfoForm />
-        <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/></div>
+        <div className="flex">
+            <div className="px-4 flex-auto w-36 ...">
+                <EducationInfoForm />
+            </div>
+            
+            
     
         </div>
     </div>
