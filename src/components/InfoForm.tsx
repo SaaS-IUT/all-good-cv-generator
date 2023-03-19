@@ -88,7 +88,7 @@ const InfoForm: NextComponentType = ({}) => {
               />
 
               </GrammarlyEditorPlugin>
-              <div>{context.address}</div>
+              
             </div>
 
 
@@ -105,7 +105,7 @@ const InfoForm: NextComponentType = ({}) => {
               context.setAddress(e.currentTarget.value);
             }}
           />
-          <div>{context.address}</div>
+          
         </div>
 
 
@@ -122,7 +122,7 @@ const InfoForm: NextComponentType = ({}) => {
               context.setZip(e.currentTarget.value);
             }}
           />
-          <div>{context.zip}</div>
+          
         </div>
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -137,7 +137,7 @@ const InfoForm: NextComponentType = ({}) => {
               context.setDateOfBirth(e.currentTarget.value);
             }}
           />
-          <div>{context.dateOfBirth}</div>
+         
         </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -156,7 +156,7 @@ const InfoForm: NextComponentType = ({}) => {
 
               </GrammarlyEditorPlugin>
 
-              <div>{context.nationality}</div>
+              
 
             </div>
 
@@ -176,7 +176,7 @@ const InfoForm: NextComponentType = ({}) => {
                 ))}
               </select>
               </div>
-              <div>{context.gender}</div>
+              
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter your Religion</label>
@@ -194,59 +194,10 @@ const InfoForm: NextComponentType = ({}) => {
 
               </GrammarlyEditorPlugin>
 
-              <div>{context.religion}</div>
+              
 
             </div>
 
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <label>Enter your Nationality</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <input
-            type="text"
-            value={context.nationality}
-            className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => {
-              context.setNationality(e.currentTarget.value);
-            }}
-          />
-          <div>{context.nationality}</div>
-        </div>
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <label>Enter your Gender</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <div>
-            <select
-              className="rounded-md border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={context.gender}
-              onChange={(e) => context.setGender(e.target.value)}
-            >
-              {options.map((value) => (
-                <option value={value} key={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>{context.gender}</div>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <label>Enter your Religion</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <input
-            type="text"
-            value={context.religion}
-            className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => {
-              context.setReligion(e.currentTarget.value);
-            }}
-          />
-          <div>{context.religion}</div>
-        </div>
         <Link href={"/editor/generatingEdu"}>
           <button
             type="submit"

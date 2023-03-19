@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const generating: NextPage = () => {
   return (
-    <div>
+    <div className="w-[160rem]">
       <div>
         <InfoForm />
       </div>

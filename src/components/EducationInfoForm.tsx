@@ -54,9 +54,9 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
             <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
-            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} /></div>=======
+            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} /></div>
             </GrammarlyEditorPlugin>
-            <div>{institutionName}</div>
+            
 
             </div>
 
@@ -76,7 +76,6 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
 
-            <div>{context.institutionLocation}</div>
 
             </GrammarlyEditorPlugin>
             
@@ -99,7 +98,7 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
 
-            <div>{context.degreeName}</div>
+            
 
             </GrammarlyEditorPlugin>
 
@@ -120,7 +119,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setGrade(e.currentTarget.value)
                 }}
             />
-            <div>{context.grade}</div>
 
             </GrammarlyEditorPlugin>
 
@@ -139,7 +137,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setStartMonth(e.currentTarget.value)
                 }}
             />
-            <div>{context.startMonth}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -156,7 +153,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setStartYear(e.currentTarget.value)
                 }}
             />
-            <div>{context.startYear}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -173,7 +169,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setEndMonth(e.currentTarget.value)
                 }}
             />
-            <div>{context.endMonth}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -191,7 +186,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setEndYear(e.currentTarget.value)
                 }}
             />
-            <div>{context.endYear}</div>
             </div>
 
             <div className="mx-5 mt-5 gap-2">
@@ -203,7 +197,6 @@ const EducationInfoForm: NextComponentType = () => {
                 onChange={e => context.setGraduated(e.target.checked)}
 
             />
-            <div>{context.graduated}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -222,8 +215,6 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setFieldOfStudy(e.currentTarget.value)
                 }}
             />
-
-            <div>{context.fieldOfStudy}</div>
 
             </GrammarlyEditorPlugin>
 
@@ -247,7 +238,6 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
 
-            <div>{context.description}</div>
 
             </GrammarlyEditorPlugin>
             </div>
