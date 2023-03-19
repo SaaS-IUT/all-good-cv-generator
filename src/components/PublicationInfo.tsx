@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
@@ -8,13 +8,17 @@ const PublicationInfo: NextComponentType = () => {
   const [link, setLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
-  const sendPublicationInfo = () => {
+  function sendPublicationInfo(){
     api.publicationInfo.updateInfo.useMutation().mutate({
       name: name,
       link: link,
       description: description
     })
   }
+
+  // useEffect(() => {
+  //   sendPublicationInfo();
+  // }),[name, link, description];
   
   return (
     <>
@@ -27,7 +31,8 @@ const PublicationInfo: NextComponentType = () => {
                 type="text"
                 placeholder="Name of skill"
                 value={name}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                 onChange={(e) => {
                 setName(e.currentTarget.value)
                 }}
@@ -44,7 +49,8 @@ const PublicationInfo: NextComponentType = () => {
                 type="text"
                 placeholder="Link of Publication"
                 value={link}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                 onChange={(e) => {
                 setLink(e.currentTarget.value)
                 }}
@@ -61,7 +67,8 @@ const PublicationInfo: NextComponentType = () => {
                 type="text"
                 placeholder="Description"
                 value={description}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
                 onChange={(e) => {
                 setDescription(e.currentTarget.value)
                 }}
@@ -69,6 +76,9 @@ const PublicationInfo: NextComponentType = () => {
             </GrammarlyEditorPlugin>
             <div>{description}</div>
         </div>
+        <button onClick={sendPublicationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+        </button>
     </>
   );
 };

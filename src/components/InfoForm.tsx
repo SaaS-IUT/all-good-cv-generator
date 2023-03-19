@@ -1,34 +1,41 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
+
 import Header from "./Header";
 import React from "react";
 import { api } from "~/utils/api";
+
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
+import AppContext from "./AppContext";
+import Link from "next/link";
+import SendInfo from "./SendInfo";
 
 
-const InfoForm: NextComponentType = () => {
 
-    const [name, setName] = useState<string>("");
-    const [address, setAddress] = useState<string>("");
-    const [dateOfBirth, setDateOfBirth] = useState<string>("");
-    const options = ["Male", "Female", "Not sure"]
-    const [gender, setGender] = useState<string>("");
-    const [zip, setZip] = useState<string>("");
-    const [nationality, setNationality] = useState<string>("");
-    const [religion, setReligion] = useState<string>("");
+const InfoForm: NextComponentType = ({}) => {
 
-    const sendGeneralInfo = () => {
+  const context = useContext(AppContext);
+
+  const options = ["Male", "Female", "Not sure"]
+
+    function sendGeneralInfo(){
       api.generalInfo.updateInfo.useMutation().mutate({
-        name: name,
-        address: address,
-        zipCode: zip,
-        dateOfBirth: dateOfBirth,
-        sex: gender,
-        nationality: nationality,
-        religion: religion
+        name: context.name,
+        address: context.address,
+        zipCode: context.zip,
+        dateOfBirth: context.dateOfBirth,
+        sex: context.gender,
+        nationality: context.nationality,
+        religion: context.religion
       })
     }
+
+
+    
+    // useEffect(() => {
+    //   sendGeneralInfo();
+    // }),[name, address, zip, dateOfBirth, gender, nationality, religion];
 
     return (
       <>
@@ -37,19 +44,25 @@ const InfoForm: NextComponentType = () => {
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter your Full Name</label>
             </div>
+
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
+
               <input
                 type="text"
                 placeholder="Name"
-                value={name}
-                className="input-bordered input input-sm w-full"
+                value={context.name}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setName(e.currentTarget.value)
+                  context.setName(e.currentTarget.value)
                 }}
               />
+
               </GrammarlyEditorPlugin>
-              <div><Header name={name} address={address} dob={dateOfBirth} nationality={nationality} religion={religion} gender={gender} zip={zip}/></div>
+             
+
+              <div className="px-[3rem]"><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/></div>
+
             </div>
             
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -60,14 +73,15 @@ const InfoForm: NextComponentType = () => {
               <input
                 type="text"
                 placeholder="Address"
-                value={address}
-                className="input-bordered input input-sm w-full"
+                value={context.address}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setAddress(e.currentTarget.value)
+                  context.setAddress(e.currentTarget.value)
                 }}
               />
+
               </GrammarlyEditorPlugin>
-              <div>{address}</div>
+              <div>{context.address}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -77,13 +91,13 @@ const InfoForm: NextComponentType = () => {
               <input
                 type="number"
                 placeholder="Address"
-                value={zip}
-                className="input-bordered input input-sm w-full"
+                value={context.zip}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setZip(e.currentTarget.value)
+                  context.setZip(e.currentTarget.value)
                 }}
               />
-              <div>{zip}</div>
+              <div>{context.zip}</div>
             </div>
             
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -92,13 +106,13 @@ const InfoForm: NextComponentType = () => {
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <input
                 type="date"
-                value={dateOfBirth}
-                className="input-bordered input input-sm w-full"
+                value={context.dateOfBirth}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setDateOfBirth(e.currentTarget.value)
+                  context.setDateOfBirth(e.currentTarget.value)
                 }}
               />
-              <div>{dateOfBirth}</div>
+              <div>{context.dateOfBirth}</div>
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -108,14 +122,17 @@ const InfoForm: NextComponentType = () => {
               <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
-                value={nationality}
-                className="input-bordered input input-sm w-full"
+                value={context.nationality}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setNationality(e.currentTarget.value)
+                  context.setNationality(e.currentTarget.value)
                 }}
               />
+
               </GrammarlyEditorPlugin>
-              <div>{nationality}</div>
+
+              <div>{context.nationality}</div>
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -123,9 +140,9 @@ const InfoForm: NextComponentType = () => {
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
               <div>
-              <select
-                value={gender}
-                onChange={e => setGender(e.target.value)}
+              <select className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={context.gender}
+                onChange={e => context.setGender(e.target.value)}
               >
                 {options.map((value) => (
                   <option value={value} key={value}>
@@ -134,7 +151,7 @@ const InfoForm: NextComponentType = () => {
                 ))}
               </select>
               </div>
-              <div>{gender}</div>
+              <div>{context.gender}</div>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter your Religion</label>
@@ -143,18 +160,25 @@ const InfoForm: NextComponentType = () => {
               <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
               <input
                 type="text"
-                value={religion}
-                className="input-bordered input input-sm w-full"
+                value={context.religion}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
-                  setReligion(e.currentTarget.value)
+                  context.setReligion(e.currentTarget.value)
                 }}
               />
+
               </GrammarlyEditorPlugin>
-              <div>{religion}</div>
+
+              <div>{context.religion}</div>
+
             </div>
-            <button  type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+
+            <Link href="/editor/generatingEdu">
+           
+            <button onClick={() => <SendInfo />}type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                 Next
-              </button>
+            </button>
+            </Link>
 
         </form>
       </>
@@ -162,4 +186,3 @@ const InfoForm: NextComponentType = () => {
   };
 
 export default InfoForm;
-  

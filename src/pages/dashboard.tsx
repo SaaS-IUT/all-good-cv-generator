@@ -8,11 +8,10 @@ const dashboard: NextPage = () => {
     <div className="h-screen">
       <div className="flex justify-center space-x-4">
         <Card props="Existing CV" />
+        <Link href="/editor/generating">
 
-        <Link href="editor/generating">
           <Card props="+CREATE NEW" />
         </Link>
-        
       </div>
     </div>
   );

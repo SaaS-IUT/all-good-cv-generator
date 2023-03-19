@@ -1,5 +1,5 @@
 import { type NextComponentType } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
@@ -17,7 +17,7 @@ const EducationInfoForm: NextComponentType = () => {
     const [fieldOfStudy, setFieldOfStudy] = useState<string>("");
     const [description, setDescription] = useState<string>("");
 
-    const sendEducationInfo = () => {
+    function sendEducationInfo(){
         api.educationInfo.updateInfo.useMutation().mutate({
             institutionName: institutionName,
             institutionLocation: institutionLocation,
@@ -32,6 +32,10 @@ const EducationInfoForm: NextComponentType = () => {
             description: description
         })
       }
+    
+    // useEffect(() => {
+    //     sendEducationInfo();
+    // }),[institutionName, institutionLocation, degreeName, grade, startMonth, startYear, endMonth, endYear, graduated, fieldOfStudy, description];
 
     return (
         <div>
@@ -47,7 +51,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Institution name"
                 value={institutionName}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setInstitutionName(e.currentTarget.value)
                 }}
@@ -65,7 +69,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Instituition Location"
                 value={institutionLocation}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setInstitutionLocation(e.currentTarget.value)
                 }}
@@ -83,7 +87,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Name of Degree"
                 value={degreeName}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setDegreeName(e.currentTarget.value)
                 }}
@@ -101,7 +105,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Grade"
                 value={grade}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setGrade(e.currentTarget.value)
                 }}
@@ -118,7 +122,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Starting Month"
                 value={startMonth}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setStartMonth(e.currentTarget.value)
                 }}
@@ -134,7 +138,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Starting Year"
                 value={startYear}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setStartYear(e.currentTarget.value)
                 }}
@@ -150,7 +154,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Ending month"
                 value={endMonth}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setEndMonth(e.currentTarget.value)
                 }}
@@ -166,7 +170,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Ending Year"
                 value={endYear}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setEndYear(e.currentTarget.value)
                 }}
@@ -179,6 +183,7 @@ const EducationInfoForm: NextComponentType = () => {
             <input
                 type="checkbox"
                 checked={true}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={e => setGraduated(e.target.checked)}
             />
             <div>{graduated}</div>
@@ -193,7 +198,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Field of Study"
                 value={fieldOfStudy}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setFieldOfStudy(e.currentTarget.value)
                 }}
@@ -211,7 +216,7 @@ const EducationInfoForm: NextComponentType = () => {
                 type="text"
                 placeholder="Description"
                 value={description}
-                className="input-bordered input input-sm w-full"
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={(e) => {
                 setDescription(e.currentTarget.value)
                 }}
@@ -219,6 +224,10 @@ const EducationInfoForm: NextComponentType = () => {
             </GrammarlyEditorPlugin>
             <div>{description}</div>
             </div>
+            
+            <button type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                Next
+            </button>
 
           </div>
         </div>
