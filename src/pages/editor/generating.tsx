@@ -8,11 +8,13 @@ import { useEffect } from "react";
 
 const generating: NextPage = () => {
   return (
-    <div className="w-[160rem]">
+    <div className="flex flex-col">
       <div>
         <InfoForm />
       </div>
+      <div className="py-2">
       <FooterNav />
+      </div>
     </div>
   );
 };
