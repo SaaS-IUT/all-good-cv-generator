@@ -2,9 +2,13 @@ import { type NextComponentType } from "next";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { api } from "~/utils/api";
+
 import AppContext from "./AppContext";
 import Education from "./Education";
 import Header from "./Header";
+
+
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
 
 const EducationInfoForm: NextComponentType = () => {
@@ -37,6 +41,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Instituition Name</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Institution name"
@@ -49,7 +54,9 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
             <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
-            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} /></div>
+            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} /></div>=======
+            </GrammarlyEditorPlugin>
+            <div>{institutionName}</div>
 
             </div>
 
@@ -57,6 +64,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label >Enter Instituition Location</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Instituition Location"
@@ -67,13 +75,19 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setInstitutionLocation(e.currentTarget.value)
                 }}
             />
+
             <div>{context.institutionLocation}</div>
+
+            </GrammarlyEditorPlugin>
+            
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Name of Degree</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Name of Degree"
@@ -84,13 +98,18 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setDegreeName(e.currentTarget.value)
                 }}
             />
+
             <div>{context.degreeName}</div>
+
+            </GrammarlyEditorPlugin>
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Grade</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Grade"
@@ -102,6 +121,9 @@ const EducationInfoForm: NextComponentType = () => {
                 }}
             />
             <div>{context.grade}</div>
+
+            </GrammarlyEditorPlugin>
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -188,6 +210,7 @@ const EducationInfoForm: NextComponentType = () => {
                 <label>Enter Field of Study</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Field of Study"
@@ -199,13 +222,18 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setFieldOfStudy(e.currentTarget.value)
                 }}
             />
+
             <div>{context.fieldOfStudy}</div>
+
+            </GrammarlyEditorPlugin>
+
             </div>
 
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
                 <label >Enter Description</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Description"
@@ -218,7 +246,10 @@ const EducationInfoForm: NextComponentType = () => {
                     context.setDescription(e.currentTarget.value)
                 }}
             />
+
             <div>{context.description}</div>
+
+            </GrammarlyEditorPlugin>
             </div>
             
 

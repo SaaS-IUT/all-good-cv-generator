@@ -2,10 +2,14 @@ import { type NextComponentType } from "next";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { api } from "~/utils/api";
+
 import AppContext from "./AppContext";
 import Education from "./Education";
 import Header from "./Header";
 import WorkExperienceInfo from "./WorkExperienceInfo";
+
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
+
 
 const Workinfo: NextComponentType = () => {
   const context = useContext(AppContext);
@@ -40,6 +44,7 @@ const Workinfo: NextComponentType = () => {
         <label>Enter Name of Position</label>
       </div>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+       <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
         <input
           type="text"
           placeholder="Name of Position"
@@ -49,6 +54,7 @@ const Workinfo: NextComponentType = () => {
             context.setPostion(e.currentTarget.value);
           }}
         />
+
         <div>
           <Header
             name={context.name}
@@ -71,7 +77,12 @@ const Workinfo: NextComponentType = () => {
             end={context.workEndYear}
           />
         </div>
+
+        </GrammarlyEditorPlugin>
+        <div>{position}</div>
+
       </div>
+
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Name of Company</label>
@@ -168,6 +179,7 @@ const Workinfo: NextComponentType = () => {
         <label>Enter Description</label>
       </div>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
         <input
           type="text"
           placeholder="Description"
@@ -177,8 +189,10 @@ const Workinfo: NextComponentType = () => {
             setDescription(e.currentTarget.value);
           }}
         />
+        </GrammarlyEditorPlugin>
         <div>{description}</div>
       </div>
+
 
       <Link href="../exportpage">
         <button
@@ -189,6 +203,7 @@ const Workinfo: NextComponentType = () => {
           FINISH
         </button>
       </Link>
+
     </div>
   );
 };

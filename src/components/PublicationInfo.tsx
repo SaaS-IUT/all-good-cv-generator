@@ -1,6 +1,7 @@
 import { type NextComponentType } from "next";
 import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
 const PublicationInfo: NextComponentType = () => {
   const [name, setName] = useState<string>("");
@@ -25,6 +26,7 @@ const PublicationInfo: NextComponentType = () => {
                 <label >Enter Name of Publication</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Publication Name"
@@ -35,6 +37,7 @@ const PublicationInfo: NextComponentType = () => {
                 setName(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{name}</div>
         </div>
         
@@ -59,6 +62,7 @@ const PublicationInfo: NextComponentType = () => {
                 <label >Enter Description</label>
             </div>
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+            <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
                 placeholder="Description"
@@ -69,6 +73,7 @@ const PublicationInfo: NextComponentType = () => {
                 setDescription(e.currentTarget.value)
                 }}
             />
+            </GrammarlyEditorPlugin>
             <div>{description}</div>
         </div>
         <button onClick={sendPublicationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">

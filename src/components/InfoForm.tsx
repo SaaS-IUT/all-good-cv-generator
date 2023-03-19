@@ -4,10 +4,14 @@ import { useContext, useState, useEffect } from "react";
 import Header from "./Header";
 import React from "react";
 import { api } from "~/utils/api";
+
+import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
+
 import AppContext from "./AppContext";
 import Link from "next/link";
 import SendInfo from "./SendInfo";
 import UpdateGeneralInfo from "./UpdateGeneralInfo";
+
 
 const InfoForm: NextComponentType = ({}) => {
   const context = useContext(AppContext);
@@ -30,25 +34,31 @@ const InfoForm: NextComponentType = ({}) => {
   //   sendGeneralInfo();
   // }),[name, address, zip, dateOfBirth, gender, nationality, religion];
 
-  return (
-    <>
-      <div className="mx-5 flex flex-col gap-2 text-3xl font-bold">
-        Personal Information
-      </div>
-      <form className="flex flex-col">
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <label>Enter your Full Name</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-2 gap-2">
-          <input
-            type="text"
-            placeholder="Name"
-            value={context.name}
-            className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => {
-              context.setName(e.currentTarget.value);
-            }}
-          />
+
+    return (
+      <>
+        <div className="mx-5 flex flex-col gap-2 font-bold text-3xl">Personal Information</div>
+          <form className="flex flex-col">
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter your Full Name</label>
+            </div>
+
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
+
+              <input
+                type="text"
+                placeholder="Name"
+                value={context.name}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => {
+                  context.setName(e.currentTarget.value)
+                }}
+              />
+
+              </GrammarlyEditorPlugin>
+             
+
           <div className="px-[3rem]">
             <Header
               name={context.name}
@@ -60,7 +70,27 @@ const InfoForm: NextComponentType = ({}) => {
               zip={context.zip}
             />
           </div>
-        </div>
+            </div>
+            
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter your Address</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
+              <input
+                type="text"
+                placeholder="Address"
+                value={context.address}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => {
+                  context.setAddress(e.currentTarget.value)
+                }}
+              />
+
+              </GrammarlyEditorPlugin>
+              <div>{context.address}</div>
+            </div>
+
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
           <label>Enter your Address</label>
@@ -77,6 +107,7 @@ const InfoForm: NextComponentType = ({}) => {
           />
           <div>{context.address}</div>
         </div>
+
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
           <label>Enter your zipcode</label>
@@ -108,6 +139,65 @@ const InfoForm: NextComponentType = ({}) => {
           />
           <div>{context.dateOfBirth}</div>
         </div>
+
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter your Nationality</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
+              <input
+                type="text"
+                value={context.nationality}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => {
+                  context.setNationality(e.currentTarget.value)
+                }}
+              />
+
+              </GrammarlyEditorPlugin>
+
+              <div>{context.nationality}</div>
+
+            </div>
+
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter your Gender</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <div>
+              <select className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                value={context.gender}
+                onChange={e => context.setGender(e.target.value)}
+              >
+                {options.map((value) => (
+                  <option value={value} key={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+              </div>
+              <div>{context.gender}</div>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+                <label >Enter your Religion</label>
+            </div>
+            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+              <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
+              <input
+                type="text"
+                value={context.religion}
+                className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => {
+                  context.setReligion(e.currentTarget.value)
+                }}
+              />
+
+              </GrammarlyEditorPlugin>
+
+              <div>{context.religion}</div>
+
+            </div>
+
 
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
           <label>Enter your Nationality</label>
