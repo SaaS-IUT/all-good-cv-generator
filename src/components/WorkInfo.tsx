@@ -1,26 +1,34 @@
 import { type NextComponentType } from "next";
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useContext, useState } from "react";
 import { api } from "~/utils/api";
+
+import AppContext from "./AppContext";
+import Education from "./Education";
+import Header from "./Header";
+import WorkExperienceInfo from "./WorkExperienceInfo";
+
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 
+
 const Workinfo: NextComponentType = () => {
-  const [position, setPostion] = useState<string>("");
-  const [companyName, setCompanyName] = useState<string>("");
+  const context = useContext(AppContext);
+
   const [startMonth, setStartMonth] = useState<string>("");
-  const [startYear, setStartYear] = useState<string>("");
+
   const [endMonth, setEndMonth] = useState<string>("");
-  const [endYear, setEndYear] = useState<string>("");
+
   const [currentlyIn, setCurrentlyIn] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
   function sendWorkInfo() {
     api.workInfo.updateInfo.useMutation().mutate({
-      position: position,
-      companyName: companyName,
+      position: context.position,
+      companyName: context.companyName,
       startMonth: startMonth,
-      startYear: startYear,
+      startYear: context.startYear,
       endMonth: endMonth,
-      endYear: endYear,
+      endYear: context.endYear,
       currentlyIn: currentlyIn,
       description: description,
     });
@@ -40,14 +48,39 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Name of Position"
-          value={position}
-          className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={context.position}
+          className="input-bordered input input-sm w-full"
           onChange={(e) => {
-            setPostion(e.currentTarget.value);
+            context.setPostion(e.currentTarget.value);
           }}
         />
+
+        <div>
+          <Header
+            name={context.name}
+            address={context.address}
+            dob={context.dateOfBirth}
+            nationality={context.nationality}
+            religion={context.religion}
+            gender={context.gender}
+            zip={context.zip}
+          />
+          <Education
+            institutionname={context.institutionName}
+            degree={context.degree}
+            endYear={context.endYear}
+          />
+          <WorkExperienceInfo
+            post={context.position}
+            place={context.companyName}
+            start={context.workStartYear}
+            end={context.workEndYear}
+          />
+        </div>
+
         </GrammarlyEditorPlugin>
         <div>{position}</div>
+
       </div>
 
 
@@ -58,13 +91,13 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Company Name"
-          value={companyName}
+          value={context.companyName}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setCompanyName(e.currentTarget.value);
+            context.setCompanyName(e.currentTarget.value);
           }}
         />
-        <div>{companyName}</div>
+        <div>{context.companyName}</div>
       </div>
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -90,29 +123,29 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Starting Year"
-          value={startYear}
+          value={context.startYear}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setStartYear(e.currentTarget.value);
+            context.setStartYear(e.currentTarget.value);
           }}
         />
-        <div>{startYear}</div>
+        <div>{context.startYear}</div>
       </div>
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-        <label>Enter Ending Month</label>
+        <label>Enter Ending Year</label>
       </div>
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <input
           type="text"
-          placeholder="Ending month"
-          value={endMonth}
+          placeholder="Ending Month"
+          value={context.endMonth}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setEndMonth(e.currentTarget.value);
+            context.setEndMonth(e.currentTarget.value);
           }}
         />
-        <div>{endMonth}</div>
+        <div>{context.endMonth}</div>
       </div>
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
@@ -122,13 +155,13 @@ const Workinfo: NextComponentType = () => {
         <input
           type="text"
           placeholder="Ending Year"
-          value={endYear}
+          value={context.endYear}
           className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => {
-            setEndYear(e.currentTarget.value);
+            context.setEndYear(e.currentTarget.value);
           }}
         />
-        <div>{endYear}</div>
+        <div>{context.endYear}</div>
       </div>
 
       <div className="mx-5 mt-5 gap-2">
@@ -159,12 +192,17 @@ const Workinfo: NextComponentType = () => {
         </GrammarlyEditorPlugin>
         <div>{description}</div>
       </div>
-      <button
-        type="submit"
-        className="mx-5 mt-5  rounded border border-blue-700 bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-      >
-        Next
-      </button>
+
+
+      <Link href="../exportpage">
+        <button
+        //   onClick={sendWorkInfo}
+          type="submit"
+          className="mx-5 mt-5  rounded border border-blue-700 bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        >
+          FINISH
+        </button>
+      </Link>
 
     </div>
   );

@@ -29,7 +29,7 @@ const PublicationInfo: NextComponentType = () => {
             <GrammarlyEditorPlugin clientId="client_JKCVw8bF58bnfhivajADMr">
             <input
                 type="text"
-                placeholder="Name of skill"
+                placeholder="Publication Name"
                 value={name}
                 className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 
