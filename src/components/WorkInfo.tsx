@@ -8,12 +8,12 @@ import Header from "./Header";
 import WorkExperienceInfo from "./WorkExperienceInfo";
 
 const Workinfo: NextComponentType = () => {
-    const context = useContext(AppContext);
-  
+  const context = useContext(AppContext);
+
   const [startMonth, setStartMonth] = useState<string>("");
-  
+
   const [endMonth, setEndMonth] = useState<string>("");
-  
+
   const [currentlyIn, setCurrentlyIn] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
@@ -36,43 +36,42 @@ const Workinfo: NextComponentType = () => {
 
   return (
     <div>
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of Position</label>
-            </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Name of Position"
-                value={context.position}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                    context.setPostion(e.currentTarget.value)
-                }}
-            />
-            <div><Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
-            <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} />
-            <WorkExperienceInfo post={context.position} place={context.companyName} start={context.workStartYear} end={context.workEndYear}/>
-            </div>
-
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <label>Enter Name of Position</label>
+      </div>
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <input
+          type="text"
+          placeholder="Name of Position"
+          value={context.position}
+          className="input-bordered input input-sm w-full"
+          onChange={(e) => {
+            context.setPostion(e.currentTarget.value);
+          }}
+        />
+        <div>
+          <Header
+            name={context.name}
+            address={context.address}
+            dob={context.dateOfBirth}
+            nationality={context.nationality}
+            religion={context.religion}
+            gender={context.gender}
+            zip={context.zip}
+          />
+          <Education
+            institutionname={context.institutionName}
+            degree={context.degree}
+            endYear={context.endYear}
+          />
+          <WorkExperienceInfo
+            post={context.position}
+            place={context.companyName}
+            start={context.workStartYear}
+            end={context.workEndYear}
+          />
         </div>
-        
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Name of Company</label>
-            </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Company Name"
-                value={context.companyName}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                    context.setCompanyName(e.currentTarget.value)
-                }}
-            />
-            <div>{context.companyName}</div>
-        </div>
-
+      </div>
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Name of Company</label>
@@ -90,7 +89,6 @@ const Workinfo: NextComponentType = () => {
         <div>{context.companyName}</div>
       </div>
 
-
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Starting Month</label>
       </div>
@@ -106,7 +104,6 @@ const Workinfo: NextComponentType = () => {
         />
         <div>{startMonth}</div>
       </div>
-
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Starting Year</label>
@@ -124,22 +121,21 @@ const Workinfo: NextComponentType = () => {
         <div>{context.startYear}</div>
       </div>
 
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Ending Year</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Ending Year"
-                value={context.endYear}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                    context.setEndYear(e.currentTarget.value)
-                }}
-            />
-            <div>{context.endYear}</div>
-        </div>
-
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <label>Enter Ending Year</label>
+      </div>
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <input
+          type="text"
+          placeholder="Ending Month"
+          value={context.endMonth}
+          className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={(e) => {
+            context.setEndMonth(e.currentTarget.value);
+          }}
+        />
+        <div>{context.endMonth}</div>
+      </div>
 
       <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
         <label>Enter Ending Year</label>
@@ -168,29 +164,31 @@ const Workinfo: NextComponentType = () => {
         <div>{currentlyIn}</div>
       </div>
 
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <label>Enter Description</label>
+      </div>
+      <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
+        <input
+          type="text"
+          placeholder="Description"
+          value={description}
+          className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={(e) => {
+            setDescription(e.currentTarget.value);
+          }}
+        />
+        <div>{description}</div>
+      </div>
 
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-                <label >Enter Description</label>
-            </div>
-            <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-            <input
-                type="text"
-                placeholder="Description"
-                value={description}
-                className="input-bordered input input-sm w-full"
-                onChange={(e) => {
-                setDescription(e.currentTarget.value)
-                }}
-            />
-            <div>{description}</div>
-        </div>
-
-        <Link href="../exportpage">
-        <button onClick={sendWorkInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                FINISH
+      <Link href="../exportpage">
+        <button
+        //   onClick={sendWorkInfo}
+          type="submit"
+          className="mx-5 mt-5  rounded border border-blue-700 bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        >
+          FINISH
         </button>
-        </Link>
-
+      </Link>
     </div>
   );
 };

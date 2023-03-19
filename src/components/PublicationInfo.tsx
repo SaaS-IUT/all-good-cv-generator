@@ -27,7 +27,7 @@ const PublicationInfo: NextComponentType = () => {
             <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
             <input
                 type="text"
-                placeholder="Name of skill"
+                placeholder="Publication Name"
                 value={name}
                 className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 

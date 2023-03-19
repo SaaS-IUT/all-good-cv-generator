@@ -4,9 +4,10 @@ interface Props {
   institutionname: string;
   degree: string;
   endYear: string;
+  graduated: boolean
 }
 
-const Education: React.FC<Props> = ({institutionname, degree, endYear}) => {
+const Education: React.FC<Props> = ({institutionname, degree, endYear, graduated}) => {
   return (
     <>
       <div>
@@ -19,7 +20,7 @@ const Education: React.FC<Props> = ({institutionname, degree, endYear}) => {
             </h3>
             <p className="text-md font-bold text-gray-600">{institutionname}</p>
             <p className="text-md font-bold text-gray-600">
-              Graduated {endYear}
+              {graduated? {endYear} : <></>} 
             </p>
           </div>
         </section>

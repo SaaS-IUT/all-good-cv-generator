@@ -176,7 +176,7 @@ const EducationInfoForm: NextComponentType = () => {
             Have you Graduated? 
             <input
                 type="checkbox"
-                checked={true}
+                checked={context.graduated}
                 className="border border-gray-500 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 onChange={e => context.setGraduated(e.target.checked)}
 
@@ -223,7 +223,7 @@ const EducationInfoForm: NextComponentType = () => {
             
 
             <Link href="generatingwork">
-                <button onClick={sendEducationInfo} type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                <button  type="submit" className="mx-5 mt-5  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                     Next
                 </button>
             </Link>

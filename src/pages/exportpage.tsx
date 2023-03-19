@@ -1,26 +1,48 @@
-import { NextComponentType } from "next";
+import { type NextComponentType } from "next";
 import Header from "~/components/Header";
 import Education from "~/components/Education";
 import WorkExperienceInfo from "~/components/WorkExperienceInfo";
 import Skills from "~/components/Skills";
 import AppContext from "../components/AppContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { ReactDOM } from "react";
+import { useReactToPrint } from "react-to-print";
+import PrintableComponent from "~/components/PrintableComponent";
+import PrintButton from "~/components/PrintButton";
 
-const Template: NextComponentType = () => {
+const exportpage: NextComponentType = () => {
+  const context = useContext(AppContext);
 
-    const context = useContext(AppContext);
   return (
-    <div className="flex items-center justify-center h-screen">
-        <div>
-        <Header name={context.name} address={context.address} dob={context.dateOfBirth} nationality={context.nationality} religion={context.religion} gender={context.gender} zip={context.zip}/>
-        <Education institutionname={context.institutionName} degree={context.degree} endYear={context.endYear} />
-        <WorkExperienceInfo post={context.position} place={context.companyName} start={context.workStartYear} end={context.workEndYear}/>
+    <div className="flex mt-10 h-auto flex-row items-center justify-center">
+      <div>
+        <Header
+          name={context.name}
+          address={context.address}
+          dob={context.dateOfBirth}
+          nationality={context.nationality}
+          religion={context.religion}
+          gender={context.gender}
+          zip={context.zip}
+        />
+        <Education
+          institutionname={context.institutionName}
+          degree={context.degree}
+          endYear={context.endYear}
+        />
+        <WorkExperienceInfo
+          post={context.position}
+          place={context.companyName}
+          start={context.workStartYear}
+          end={context.workEndYear}
+        />
         <Skills />
-        </div>
-        <button className="btn btn-primary" id="download"> download pdf</button>
+      </div>
+      <div className="pl-5">
+        <PrintButton />
+      </div>
     </div>
   );
 };
 
-export default Template;
+export default exportpage;
