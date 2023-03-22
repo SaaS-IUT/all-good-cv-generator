@@ -11,6 +11,7 @@ import AppContext from "./AppContext";
 import Link from "next/link";
 import SendInfo from "./SendInfo";
 import UpdateGeneralInfo from "./UpdateGeneralInfo";
+import { env } from "process";
 
 const InfoForm: NextComponentType = ({}) => {
   const context = useContext(AppContext);
@@ -28,6 +29,7 @@ const InfoForm: NextComponentType = ({}) => {
       religion: context.religion,
     });
   }
+
 
   // useEffect(() => {
   //   sendGeneralInfo();
@@ -74,22 +76,6 @@ const InfoForm: NextComponentType = ({}) => {
             />
           </GrammarlyEditorPlugin>
         </div>
-
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <label>Enter your Address</label>
-        </div>
-        <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
-          <input
-            type="text"
-            placeholder="Address"
-            value={context.address}
-            className="rounded-md border border-gray-500 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={(e) => {
-              context.setAddress(e.currentTarget.value);
-            }}
-          />
-        </div>
-
         <div className="mx-5 mt-5 grid grid-cols-4 gap-2">
           <label>Enter your zipcode</label>
         </div>

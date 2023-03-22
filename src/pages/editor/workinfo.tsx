@@ -5,12 +5,12 @@ import WorkInfo from "~/components/WorkInfo";
 
 const workinfo: NextPage = () => {
   return (
+    <div className="flex flex-col">
     <div>
-      <div>
-        <WorkInfo />
-      </div>
-      <FooterNav />
+      <WorkInfo />
     </div>
+ 
+  </div>
   );
 };
 

@@ -6,7 +6,7 @@ const generatingEdu: NextPage = () => {
     
     return (
     <div>
-        <div className="w-[160rem]">
+        <div className="">
                 <EducationInfoForm />        
         </div>
     </div>

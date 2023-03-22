@@ -12,7 +12,7 @@ const generatingwork: NextPage = () => {
     
     return (
     <div>
-        <div className="w-[160rem]">
+        <div className="">
                 <Workinfo />        
         </div>
     </div>

@@ -5,6 +5,7 @@ interface Props {
   place: string;
   start: string;
   end: string;
+  description: string;
 }
 
 const WorkExperienceInfo: React.FC<Props>  = ( { post, place, start, end } ) => {

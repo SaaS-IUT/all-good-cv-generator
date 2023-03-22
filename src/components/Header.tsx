@@ -18,8 +18,8 @@ const Header: React.FC<Props> = ({name, address, zip, dob, nationality, gender, 
         <p className="text-lg">Software Developer</p>
         <div>{address} - {zip}</div>
       </header>
-      <h3 className='px-4 font-bold'>Personal Infomation</h3>
-      <div className="px-4">
+      <h3 className='px-4 text-xl font-bold py-2'>Personal Infomation</h3>
+      <div className="px-4 py-2">
         Date of Birth: {dob} &emsp; Nationality: {nationality} &emsp; Gender: {gender} &emsp; Religion: {religion}
       </div>
       
